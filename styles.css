@@ -17,7 +17,8 @@
   --white:        #ffffff;
   --text-muted:   #cccccc;
   --font-title:   'Bebas Neue', sans-serif;
-  --font-body:    'Lato', sans-serif;
+  --font-body:    'Roboto Serif', serif;
+  --font-section: 'Roboto Serif', serif;
 }
 
 html {
@@ -82,6 +83,22 @@ header {
 .nav-icon svg {
   width: 20px;
   height: 20px;
+}
+
+.nav-icon--menu svg {
+  fill: var(--white);
+}
+
+.nav-icon--cart svg {
+  width: 22px;
+  height: 22px;
+}
+
+.nav-icon--cart .cart-body {
+  fill: var(--orange);
+}
+
+.nav-icon--cart .cart-wheel {
   fill: var(--white);
 }
 
@@ -99,14 +116,31 @@ header {
 .hero {
   position: relative;
   width: 100%;
-  min-height: 260px;
-  overflow: hidden;
 }
 
-.hero img {
+.hero .hero-bg {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+}
+
+.hero .hero-logo {
+  position: absolute;
+  top: -11.5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 46px;
+  height: auto;
+  z-index: 101;
+  animation: hero-logo-fade linear both;
+  animation-timeline: scroll(root);
+  animation-range: 0 60px;
+}
+
+@keyframes hero-logo-fade {
+  to {
+    opacity: 0;
+  }
 }
 
 /* ─── SECTION WRAPPER ───────────────────────────────────────── */
@@ -115,15 +149,15 @@ section {
 }
 
 .section-title {
-  font-family: var(--font-body);
-  font-size: 22px;
+  font-family: var(--font-section);
+  font-size: 25px;
   font-weight: 700;
+  font-style: italic;
   margin-bottom: 20px;
   color: var(--white);
 }
 
 .section-title em {
-  font-style: italic;
   color: var(--orange);
 }
 
@@ -132,46 +166,56 @@ section {
   background: transparent;
 }
 
+.pilares .section-title {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
 .member-card {
   display: flex;
   align-items: center;
-  gap: 14px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-  border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 20px 45px rgba(0,0,0,0.18);
-  border-radius: 18px;
-  padding: 18px;
-  margin-bottom: 18px;
+  gap: 16px;
+  background: linear-gradient(180deg, rgba(86, 109, 200, 0.349), rgba(64, 89, 170, 0.356));
+  border: 2px solid rgba(255,255,255,0.18);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.22);
+  border-radius: 5px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.member-info {
+  text-align: left;
 }
 
 .member-card img {
   width: 84px;
   height: 84px;
   object-fit: cover;
-  border-radius: 16px;
+  border-radius: 8px;
   flex-shrink: 0;
-  box-shadow: 0 16px 30px rgba(0,0,0,0.25);
+  background: radial-gradient(circle at 50% 62%,
+    rgba(96,156,255,1) 0%,
+    rgba(60,104,225,0.75) 34%,
+    rgba(20,32,80,0.1) 64%);
 }
 
 .member-info h3 {
   font-family: var(--font-body);
   font-size: 16px;
   font-weight: 700;
+  font-style: normal;
   color: var(--orange);
   margin-bottom: 4px;
 }
 
 .member-info p {
   font-size: 13px;
+  font-style: normal;
   color: var(--text-muted);
   line-height: 1.4;
 }
 
 /* ─── BANDA ─────────────────────────────────────────────────── */
-.banda .section-title {
-  font-size: 24px;
-  font-weight: 900;
-}
 
 .banda-subtitle {
   font-size: 15px;
@@ -211,7 +255,7 @@ section {
 
 .year-text em {
   font-style: italic;
-  color: var(--orange-light);
+  color: var(--white);
   font-weight: 700;
 }
 
@@ -229,17 +273,18 @@ section {
 }
 
 .quote-card {
-  background: var(--navy-card);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: linear-gradient(180deg, rgba(86,108,200,0.5), rgba(64,88,170,0.5));
+  border: 2px solid rgba(255,255,255,0.18);
   border-radius: 20px;
   padding: 22px 18px;
   margin-bottom: 24px;
-  box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.22);
 }
 
 .quote-card blockquote {
   font-size: 15px;
   font-style: italic;
+  font-weight: 400;
   line-height: 1.7;
   color: var(--white);
   margin-bottom: 10px;
@@ -328,7 +373,8 @@ section {
 
 /* ─── TIMELINE ──────────────────────────────────────────────── */
 .timeline-title {
-  font-size: 22px;
+  font-family: var(--font-section);
+  font-size: 25px;
   font-style: italic;
   font-weight: 700;
   margin-bottom: 28px;
@@ -568,8 +614,8 @@ footer {
     padding: 40px 32px;
   }
 
-  .section-title {
-    font-size: 26px;
+  .pilares .section-title {
+    margin-bottom: 40px;
   }
 
   .member-card img {
@@ -652,6 +698,10 @@ footer {
     margin: 0 auto;
   }
 
+  .pilares .section-title {
+    margin-bottom: 60px;
+  }
+
   footer {
     padding: 48px 80px 32px;
   }
@@ -668,7 +718,17 @@ footer {
   }
 
   .hero {
-    min-height: 400px;
+    height: 460px;
+  }
+
+  .hero .hero-bg {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero .hero-logo {
+    top: -15px;
+    width: 60px;
   }
 
   .member-cards-grid {
