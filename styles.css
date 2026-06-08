@@ -317,7 +317,7 @@ section {
 
 /* Band photo card */
 .band-photo-card {
-  background: linear-gradient(180deg, rgba(232,96,10,0.95), rgba(61,26,10,0.95));
+  background: #ca4f07;
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 20px;
   padding: 20px;
@@ -336,6 +336,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translateY(1px);
 }
 
 .band-photo-card .photo-stack img {
@@ -344,30 +345,32 @@ section {
   height: 140px;
   object-fit: cover;
   border-radius: 4px;
-  border: 2px solid rgba(255,255,255,0.15);
+  border: none;
 }
 
 .band-photo-card .photo-stack img:nth-child(1) {
-  transform: rotate(-8deg) translateX(-55px);
-  z-index: 1;
+  transform: rotate(-5deg) translateX(-120px) translateY(-15px);
+  z-index: 3;
 }
 
 .band-photo-card .photo-stack img:nth-child(2) {
+  width: 170px;
+  height: 110px;
   transform: rotate(0deg);
-  z-index: 2;
+  z-index: 1;
 }
 
 .band-photo-card .photo-stack img:nth-child(3) {
-  transform: rotate(7deg) translateX(55px);
-  z-index: 1;
+  transform: rotate(5deg) translateX(120px) translateY(-15px);
+  z-index: 2;
 }
 
 .band-photo-card .soda-logo {
   position: absolute;
-  bottom: 12px;
+  bottom: -5px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
+  width: 120px;
   z-index: 3;
 }
 
@@ -413,26 +416,32 @@ section {
   width: 32px;
   height: 32px;
   object-fit: contain;
+  border: 2px solid var(--white);
+  border-radius: 50%;
 }
 
 .timeline-card {
+  position: relative;
   background: var(--navy-card);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 18px;
-  padding: 18px;
+  padding: 24px 18px 18px;
   box-shadow: 0 25px 45px rgba(0,0,0,0.18);
 }
 
 .timeline-year {
+  position: absolute;
+  top: -13px;
+  left: 0px;
   display: inline-block;
-  background: var(--orange);
+  background: rgba(232,96,10,0.7);
   color: var(--white);
   font-size: 11px;
   font-weight: 700;
-  padding: 2px 10px;
+  padding: 3px 12px;
   border-radius: 20px;
-  margin-bottom: 8px;
   letter-spacing: 1px;
+  z-index: 2;
 }
 
 .timeline-card h3 {
@@ -645,11 +654,16 @@ footer {
   }
 
   .band-photo-card .photo-stack img:nth-child(1) {
-    transform: rotate(-8deg) translateX(-70px);
+    transform: rotate(-8deg) translateX(-140px);
+  }
+
+  .band-photo-card .photo-stack img:nth-child(2) {
+    width: 190px;
+    height: 140px;
   }
 
   .band-photo-card .photo-stack img:nth-child(3) {
-    transform: rotate(7deg) translateX(70px);
+    transform: rotate(7deg) translateX(140px);
   }
 
   .band-photo-card .soda-logo {
@@ -763,11 +777,16 @@ footer {
   }
 
   .band-photo-card .photo-stack img:nth-child(1) {
-    transform: rotate(-8deg) translateX(-85px);
+    transform: rotate(-8deg) translateX(-165px);
+  }
+
+  .band-photo-card .photo-stack img:nth-child(2) {
+    width: 220px;
+    height: 160px;
   }
 
   .band-photo-card .photo-stack img:nth-child(3) {
-    transform: rotate(7deg) translateX(85px);
+    transform: rotate(7deg) translateX(165px);
   }
 
   .timeline {
