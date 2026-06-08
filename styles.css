@@ -52,6 +52,44 @@ a {
   color: inherit;
 }
 
+/* Enlace para saltar al contenido (accesibilidad por teclado) */
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -56px;
+  z-index: 200;
+  background: var(--orange);
+  color: var(--white);
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 8px;
+}
+
+/* Foco visible para navegación con teclado (accesibilidad) */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Respetar la preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* ─── HEADER / NAV ──────────────────────────────────────────── */
 header {
   position: sticky;
@@ -74,6 +112,7 @@ header {
   justify-content: center;
   cursor: pointer;
   flex-shrink: 0;
+  appearance: none;
   background: rgba(0, 0, 0, 0.35);
   border: 1px solid rgba(255,255,255,0.15);
   box-shadow: 0 12px 22px rgba(0,0,0,0.25);
@@ -170,6 +209,10 @@ section {
 .pilares .section-title {
   margin-bottom: 32px;
   text-align: center;
+}
+
+.member-cards-grid {
+  list-style: none;
 }
 
 .member-card {
@@ -388,6 +431,7 @@ section {
 .timeline {
   position: relative;
   padding-left: 36px;
+  list-style: none;
 }
 
 .timeline-item:not(:last-child)::before {
@@ -548,6 +592,10 @@ section {
   z-index: 2;
 }
 
+.stats-grid {
+  list-style: none;
+}
+
 .stat-card {
   background: var(--navy-card);
   border-radius: 14px;
@@ -556,6 +604,7 @@ section {
 }
 
 .stat-card .stat-number {
+  display: block;
   font-size: 20px;
   font-weight: 900;
   color: var(--orange);
@@ -576,16 +625,18 @@ section {
 footer {
   background: rgba(0, 0, 0, 0.85);
   padding: 36px 16px 30px;
-}
-
-.footer-top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "title social"
+    "legal legal";
+  column-gap: 16px;
+  row-gap: 20px;
+  align-items: start;
 }
 
 .footer-title {
+  grid-area: title;
   font-family: var(--font-title);
   font-weight: 400;
   font-synthesis: none;
@@ -595,10 +646,15 @@ footer {
   letter-spacing: 2px;
 }
 
+.footer-social {
+  grid-area: social;
+}
+
 .footer-icons {
   display: flex;
   gap: 10px;
   padding-top: 4px;
+  list-style: none;
 }
 
 .footer-icon {
@@ -609,6 +665,7 @@ footer {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  text-decoration: none;
   transition: opacity 0.2s;
 }
 
@@ -623,6 +680,7 @@ footer {
 }
 
 .footer-legal {
+  grid-area: legal;
   font-size: 11px;
   line-height: 1.7;
   color: var(--orange);
@@ -738,17 +796,10 @@ footer {
   }
 
   footer {
-    padding: 48px 80px 32px;
-  }
-
-  .footer-top {
-    max-width: 900px;
-    margin: 0 auto 20px;
+    padding: 48px max(80px, calc((100% - 900px) / 2)) 32px;
   }
 
   .footer-legal {
-    max-width: 900px;
-    margin: 0 auto;
     font-size: 12px;
   }
 

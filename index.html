@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Soda Stereo | La banda que cambió todo</title>
+  <meta name="description" content="Homenaje a Soda Stereo y Gustavo Cerati: los pilares de la banda, su historia, el viaje y los álbumes de estudio del grupo más influyente del rock latinoamericano." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Erica+One&family=Roboto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
@@ -11,214 +12,239 @@
 </head>
 <body>
 
+  <!-- Por qué existe este link de Saltar al contenido? 
+  Este link es para saltar al contenido principal de la página.
+  Es útil para los usuarios que usan lectores de pantalla o que navegan con el teclado.
+  
+  Es una buena práctica para la accesibilidad.
+  Para verlo recargue la página y presione la tecla Tab.
+  El link se verá como un botón de la barra de navegación.
+  -->
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
   <!-- ── HEADER ─────────────────────────────────────────────────── -->
   <header>
-    <div class="nav-icon nav-icon--menu" aria-label="Menú">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <!-- Qué es aria-label?
+     Aria-label es un atributo que se usa para describir el propósito de un elemento.
+     Es útil para los usuarios que usan lectores de pantalla o que navegan con el teclado.
+     Es una buena práctica para la accesibilidad.
+     Para verlo recargue la página y presione la tecla Tab.
+     El botón se verá como un botón de la barra de navegación.
+     -->
+    <button type="button" class="nav-icon nav-icon--menu" aria-label="Abrir menú de navegación">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <rect x="3" y="6" width="18" height="2" rx="1"/>
         <rect x="3" y="11" width="18" height="2" rx="1"/>
         <rect x="3" y="16" width="18" height="2" rx="1"/>
       </svg>
-    </div>
+    </button>
 
     <h1 class="header-title">GUSTAVO<br>CERATI</h1>
 
-    <div class="nav-icon nav-icon--cart" aria-label="Carrito">
-      <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <button type="button" class="nav-icon nav-icon--cart" aria-label="Carrito de compras">
+      <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <path class="cart-body" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4z"/>
         <circle class="cart-wheel" cx="5" cy="14" r="1.5"/>
         <circle class="cart-wheel" cx="12" cy="14" r="1.5"/>
       </svg>
-    </div>
+    </button>
   </header>
 
-  <!-- ── HERO ───────────────────────────────────────────────────── -->
-  <div class="hero">
-    <img class="hero-bg" src="img/band-silhouette.webp" alt="Soda Stereo siluetas" />
-    <img class="hero-logo" src="img/soda-logo-min.png" alt="Logo Soda Stereo" />
-  </div>
+  <main id="contenido">
 
-  <!-- ── PILARES ────────────────────────────────────────────────── -->
-  <section class="pilares">
-    <h2 class="section-title">Los <em>pilares</em> de Soda Stereo</h2>
-    <div class="member-cards-grid">
+    <!-- ── HERO ───────────────────────────────────────────────────── -->
+    <figure class="hero">
+      <img class="hero-bg" src="img/band-silhouette.webp" alt="Siluetas de los integrantes de Soda Stereo" />
+      <img class="hero-logo" src="img/soda-logo-min.png" alt="Logo de Soda Stereo" />
+    </figure>
 
-      <div class="member-card">
-        <img src="img/member-cerati.png" alt="Gustavo Cerati" />
-        <div class="member-info">
-          <h3>Gustavo Cerati</h3>
-          <p>Voz principal, composición.<br>11 ago 1959 – 04 sep 2014.</p>
-        </div>
-      </div>
+    <!-- ── PILARES ────────────────────────────────────────────────── -->
+    <section class="pilares" aria-labelledby="pilares-title">
+      <h2 class="section-title" id="pilares-title">Los <em>pilares</em> de Soda Stereo</h2>
+      <ul class="member-cards-grid" role="list">
 
-      <div class="member-card">
-        <img src="img/member-alberti.png" alt="Charly Alberti" />
-        <div class="member-info">
-          <h3>Charly Alberti</h3>
-          <p>Batería, percusión, co-fund.</p>
-        </div>
-      </div>
+        <li class="member-card">
+          <img src="img/member-cerati.png" alt="Retrato de Gustavo Cerati" loading="lazy" decoding="async" />
+          <hgroup class="member-info">
+            <h3>Gustavo Cerati</h3>
+            <p>Voz principal, composición.<br>11 ago 1959 – 04 sep 2014.</p>
+          </hgroup>
+        </li>
 
-      <div class="member-card">
-        <img src="img/member-zeta.png" alt="Zeta Bosio" />
-        <div class="member-info">
-          <h3>Zeta Bosio</h3>
-          <p>Bajo, coros, co-fund.</p>
-        </div>
-      </div>
+        <li class="member-card">
+          <img src="img/member-alberti.png" alt="Retrato de Charly Alberti" loading="lazy" decoding="async" />
+          <hgroup class="member-info">
+            <h3>Charly Alberti</h3>
+            <p>Batería, percusión, co-fund.</p>
+          </hgroup>
+        </li>
 
-    </div>
-  </section>
+        <li class="member-card">
+          <img src="img/member-zeta.png" alt="Retrato de Zeta Bosio" loading="lazy" decoding="async" />
+          <hgroup class="member-info">
+            <h3>Zeta Bosio</h3>
+            <p>Bajo, coros, co-fund.</p>
+          </hgroup>
+        </li>
 
-  <!-- ── BANDA ──────────────────────────────────────────────────── -->
-  <section class="banda">
-    <h2 class="section-title">La banda que cambió todo</h2>
-    <p class="banda-subtitle">
-      Tres músicos. Una ciudad en efervescencia.<br>
-      La historia de la banda <strong>más influyente del rock latinoamericano.</strong>
-    </p>
+      </ul>
+    </section>
 
-    <div class="year-block">
-      <span class="year-number">'82</span>
-      <p class="year-text">
-        Argentina emergía en una dictadura militar que <em>silenció la cultura</em> durante años.
+    <!-- ── BANDA ──────────────────────────────────────────────────── -->
+    <section class="banda" aria-labelledby="banda-title">
+      <h2 class="section-title" id="banda-title">La banda que cambió todo</h2>
+      <p class="banda-subtitle">
+        Tres músicos. Una ciudad en efervescencia.<br>
+        La historia de la banda <strong>más influyente del rock latinoamericano.</strong>
       </p>
-    </div>
 
-    <p class="body-text">
-      Con la vuelta de la democracia en 1983, la sociedad necesitaba explotar. El rock nacional,
-      antes perseguido, se convertía en el <strong>lenguaje de una generación.</strong>
-    </p>
+      <aside class="year-block">
+        <time class="year-number" datetime="1982">'82</time>
+        <p class="year-text">
+          Argentina emergía en una dictadura militar que <em>silenció la cultura</em> durante años.
+        </p>
+      </aside>
 
-    <div class="quote-card">
-      <blockquote>
-        "Era una época de libertad total. Podíamos hacer cualquier cosa porque <strong>nadie sabía qué era lo correcto</strong>."
-      </blockquote>
-      <cite>— Gustavo Cerati</cite>
-    </div>
+      <p class="body-text">
+        Con la vuelta de la democracia en 1983, la sociedad necesitaba explotar. El rock nacional,
+        antes perseguido, se convertía en el <strong>lenguaje de una generación.</strong>
+      </p>
 
-    <p class="body-text">
-      La postguerra de Malvinas dejó una herida profunda pero también encendió un <strong>orgullo cultural</strong>
-      sin precedentes. Buenos Aires se llenó de bares, clubs nocturnos y espacios de experimentación artística.
-    </p>
+      <figure class="quote-card">
+        <blockquote>
+          "Era una época de libertad total. Podíamos hacer cualquier cosa porque <strong>nadie sabía qué era lo correcto</strong>."
+        </blockquote>
+        <figcaption><cite>— Gustavo Cerati</cite></figcaption>
+      </figure>
 
-    <p class="bullet-text">
-      La escena del rock nacional ya tenía referentes —Spinetta, Almendra, Charly García— pero Soda Stereo
-      traería algo diferente: <strong>imagen, producción y ambición internacional.</strong>
-    </p>
+      <p class="body-text">
+        La postguerra de Malvinas dejó una herida profunda pero también encendió un <strong>orgullo cultural</strong>
+        sin precedentes. Buenos Aires se llenó de bares, clubs nocturnos y espacios de experimentación artística.
+      </p>
 
-    <div class="band-photo-card">
-      <div class="photo-stack">
-        <img src="img/band-1.png" alt="Soda Stereo foto 1" />
-        <img src="img/band-2.png" alt="Soda Stereo foto 2" />
-        <img src="img/band-3.png" alt="Soda Stereo foto 3" />
-      </div>
-      <img class="soda-logo" src="img/soda-logo-nobg.png" alt="Logo Soda Stereo" />
-    </div>
-  </section>
+      <p class="bullet-text">
+        La escena del rock nacional ya tenía referentes —Spinetta, Almendra, Charly García— pero Soda Stereo
+        traería algo diferente: <strong>imagen, producción y ambición internacional.</strong>
+      </p>
 
-  <!-- ── EL VIAJE ───────────────────────────────────────────────── -->
-  <section class="viaje">
-    <h2 class="timeline-title">El viaje</h2>
+      <figure class="band-photo-card">
+        <span class="photo-stack">
+          <img src="img/band-1.png" alt="Soda Stereo en vivo (foto 1)" loading="lazy" decoding="async" />
+          <img src="img/band-2.png" alt="Soda Stereo en vivo (foto 2)" loading="lazy" decoding="async" />
+          <img src="img/band-3.png" alt="Soda Stereo en vivo (foto 3)" loading="lazy" decoding="async" />
+        </span>
+        <img class="soda-logo" src="img/soda-logo-nobg.png" alt="Logo de Soda Stereo" loading="lazy" decoding="async" />
+      </figure>
+    </section>
 
-    <div class="timeline">
+    <!-- ── EL VIAJE ───────────────────────────────────────────────── -->
+    <section class="viaje" aria-labelledby="viaje-title">
+      <h2 class="timeline-title" id="viaje-title">El viaje</h2>
 
-      <div class="timeline-item">
-        <img class="timeline-marker" src="img/disco.png" alt="disco" />
-        <div class="timeline-card">
-          <span class="timeline-year">1982</span>
-          <h3>Formación de la banda</h3>
-          <p>Cerati, Bosio y Alberti se unen en Buenos Aires. Empiezan a tocar en bares y recitales pequeños de la escena under porteña. El nombre de Soda Stereo surge de la combinación de dos palabras de la cultura pop.</p>
-        </div>
-      </div>
+      <ol class="timeline">
 
-      <div class="timeline-item">
-        <img class="timeline-marker" src="img/disco.png" alt="disco" />
-        <div class="timeline-card">
-          <span class="timeline-year">1984</span>
-          <h3>Debut discográfico</h3>
-          <p>Lanzan su primer álbum homónimo con CBS Records. Hits inmediatos: "Debo Ser" y "Trátame Suavemente". La banda empieza a llenar teatros en Argentina.</p>
-        </div>
-      </div>
+        <li class="timeline-item">
+          <img class="timeline-marker" src="img/disco.png" alt="" loading="lazy" decoding="async" />
+          <article class="timeline-card">
+            <time class="timeline-year" datetime="1982">1982</time>
+            <h3>Formación de la banda</h3>
+            <p>Cerati, Bosio y Alberti se unen en Buenos Aires. Empiezan a tocar en bares y recitales pequeños de la escena under porteña. El nombre de Soda Stereo surge de la combinación de dos palabras de la cultura pop.</p>
+          </article>
+        </li>
 
-      <div class="timeline-item">
-        <img class="timeline-marker" src="img/disco.png" alt="disco" />
-        <div class="timeline-card">
-          <span class="timeline-year">1985</span>
-          <h3>Conquista regional</h3>
-          <p>El segundo álbum explota en toda Latinoamérica. Primera gira por Chile, México, Venezuela y Colombia.</p>
-        </div>
-      </div>
+        <li class="timeline-item">
+          <img class="timeline-marker" src="img/disco.png" alt="" loading="lazy" decoding="async" />
+          <article class="timeline-card">
+            <time class="timeline-year" datetime="1984">1984</time>
+            <h3>Debut discográfico</h3>
+            <p>Lanzan su primer álbum homónimo con CBS Records. Hits inmediatos: "Debo Ser" y "Trátame Suavemente". La banda empieza a llenar teatros en Argentina.</p>
+          </article>
+        </li>
 
-      <div class="timeline-item timeline-cta">
-        <img class="timeline-marker" src="img/disco.png" alt="disco" />
-        <a href="#" class="btn">Conocé la historia completa</a>
-      </div>
+        <li class="timeline-item">
+          <img class="timeline-marker" src="img/disco.png" alt="" loading="lazy" decoding="async" />
+          <article class="timeline-card">
+            <time class="timeline-year" datetime="1985">1985</time>
+            <h3>Conquista regional</h3>
+            <p>El segundo álbum explota en toda Latinoamérica. Primera gira por Chile, México, Venezuela y Colombia.</p>
+          </article>
+        </li>
 
-    </div>
-  </section>
+        <li class="timeline-item timeline-cta">
+          <img class="timeline-marker" src="img/disco.png" alt="" loading="lazy" decoding="async" />
+          <a href="#" class="btn">Conocé la historia completa</a>
+        </li>
 
-  <!-- ── ÁLBUMES ─────────────────────────────────────────────────── -->
-  <section class="albumes">
-    <h2 class="timeline-title">Álbumes de estudio</h2>
+      </ol>
+    </section>
 
-    <div class="albums-circles">
-      <img src="img/mask-group-1.png" alt="Álbum 1" />
-      <img src="img/mask-group-2.png" alt="Álbum 2" />
-      <img src="img/mask-group-3.png" alt="Álbum 3" />
-    </div>
+    <!-- ── ÁLBUMES ─────────────────────────────────────────────────── -->
+    <section class="albumes" aria-labelledby="albumes-title">
+      <h2 class="timeline-title" id="albumes-title">Álbumes de estudio</h2>
 
-    <a href="#" class="btn">Ver discografía completa</a>
+      <figure class="albums-circles">
+        <img src="img/mask-group-1.png" alt="Portada de un álbum de estudio de Soda Stereo" loading="lazy" decoding="async" />
+        <img src="img/mask-group-2.png" alt="Portada de un álbum de estudio de Soda Stereo" loading="lazy" decoding="async" />
+        <img src="img/mask-group-3.png" alt="Portada de un álbum de estudio de Soda Stereo" loading="lazy" decoding="async" />
+      </figure>
 
-    <div class="stats-grid">
+      <a href="#" class="btn">Ver discografía completa</a>
 
-      <div class="stat-card">
-        <div class="stat-number">15</div>
-        <p>Años de carrera activa.</p>
-      </div>
+      <ul class="stats-grid" role="list">
 
-      <div class="stat-card">
-        <div class="stat-number">7</div>
-        <p>Álbumes de estudio publicados.</p>
-      </div>
+        <li class="stat-card">
+          <span class="stat-number">15</span>
+          <p>Años de carrera activa.</p>
+        </li>
 
-      <div class="stat-card">
-        <div class="stat-number">#1</div>
-        <p><em>"De Música Ligera"</em> elegida la mejor canción del rock a nivel global.</p>
-      </div>
+        <li class="stat-card">
+          <span class="stat-number">7</span>
+          <p>Álbumes de estudio publicados.</p>
+        </li>
 
-    </div>
-  </section>
+        <li class="stat-card">
+          <span class="stat-number">#1</span>
+          <p><em>"De Música Ligera"</em> elegida la mejor canción del rock a nivel global.</p>
+        </li>
+
+      </ul>
+    </section>
+
+  </main>
 
   <!-- ── FOOTER ─────────────────────────────────────────────────── -->
   <footer>
-    <div class="footer-top">
-      <div class="footer-title">GRACIAS<br>TOTALES</div>
-      <div class="footer-icons">
+    <p class="footer-title">GRACIAS<br>TOTALES</p>
 
-        <!-- Spotify -->
-        <div class="footer-icon" aria-label="Spotify">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.623.623 0 01-.857.208c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 11-.277-1.216c3.809-.87 7.076-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 01-.973-.519.781.781 0 01.519-.972c3.632-1.102 8.147-.568 11.234 1.328a.78.78 0 01.257 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.937.937 0 11-.543-1.793c3.563-1.08 9.484-.87 13.22 1.37a.937.937 0 01-.06 1.58z"/>
-          </svg>
-        </div>
+    <nav class="footer-social" aria-label="Redes sociales">
+      <ul class="footer-icons" role="list">
 
-        <!-- Instagram -->
-        <div class="footer-icon" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-          </svg>
-        </div>
+        <li>
+          <a class="footer-icon" href="#" aria-label="Spotify">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.623.623 0 01-.857.208c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 11-.277-1.216c3.809-.87 7.076-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 01-.973-.519.781.781 0 01.519-.972c3.632-1.102 8.147-.568 11.234 1.328a.78.78 0 01.257 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.937.937 0 11-.543-1.793c3.563-1.08 9.484-.87 13.22 1.37a.937.937 0 01-.06 1.58z"/>
+            </svg>
+          </a>
+        </li>
 
-        <!-- Facebook -->
-        <div class="footer-icon" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-          </svg>
-        </div>
+        <li>
+          <a class="footer-icon" href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+          </a>
+        </li>
 
-      </div>
-    </div>
+        <li>
+          <a class="footer-icon" href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+        </li>
+
+      </ul>
+    </nav>
 
     <p class="footer-legal">
       © 2026 Sitio web dedicado a Gustavo Cerati. Proyecto realizado con fines educativos,
@@ -229,5 +255,3 @@
 
 </body>
 </html>
-
-
