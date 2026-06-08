@@ -223,7 +223,7 @@ Cómo se posiciona:
   el header (queda "montado" en el borde). z-index: 101 lo deja por encima.
 - left: 50% + translateX(-50%) es el truco para centrarlo horizontalmente.
 
-Cómo se desvanece SIN JavaScript:
+Cómo se desvanece:
 - animation-timeline: scroll(root) liga el avance de la animación al scroll
   de la página (en vez de al tiempo).
 - animation-range: 0 60px hace que la animación se complete en los primeros
