@@ -118,26 +118,18 @@ header {
   box-shadow: 0 12px 22px rgba(0,0,0,0.25);
 }
 
-.nav-icon svg {
-  width: 20px;
-  height: 20px;
+.nav-icon i {
+  font-size: 20px;
+  line-height: 1;
 }
 
-.nav-icon--menu svg {
-  fill: var(--white);
+.nav-icon--menu i {
+  color: var(--white);
 }
 
-.nav-icon--cart svg {
-  width: 22px;
-  height: 22px;
-}
-
-.nav-icon--cart .cart-body {
-  fill: var(--orange);
-}
-
-.nav-icon--cart .cart-wheel {
-  fill: var(--white);
+.nav-icon--cart i {
+  font-size: 22px;
+  color: var(--orange);
 }
 
 .header-title {
@@ -673,10 +665,10 @@ footer {
   opacity: 0.7;
 }
 
-.footer-icon svg {
-  width: 26px;
-  height: 26px;
-  fill: #4a6ee0;
+.footer-icon i {
+  font-size: 26px;
+  color: #4a6ee0;
+  line-height: 1;
 }
 
 .footer-legal {
