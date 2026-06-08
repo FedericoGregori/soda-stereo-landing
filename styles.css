@@ -16,7 +16,7 @@
   --maroon:       #3d1a0a;
   --white:        #ffffff;
   --text-muted:   #cccccc;
-  --font-title:   'Bebas Neue', sans-serif;
+  --font-title:   'Erica One', system-ui, cursive;
   --font-body:    'Roboto Serif', serif;
   --font-section: 'Roboto Serif', serif;
 }
@@ -30,15 +30,14 @@ body {
   color: var(--white);
   background: linear-gradient(
     to bottom,
-    #8B0000 0%,
-    #6b1200 5%,
-    #3d1a0a 15%,
-    #1a0a2e 28%,
-    #0a0f2e 40%,
-    #0d1b4b 55%,
-    #1a0a3d 68%,
-    #0d1b4b 80%,
-    #0a0a1a 100%
+    #000000 8%,
+    #943a06 15%,
+    var(--navy) 30%,
+    #943a06 50%,
+    #26358a 55%,
+    #14224e 60%,
+    #0a1230 80%,
+    #943a06 100%
   );
   min-height: 100vh;
 }
@@ -49,7 +48,7 @@ img {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: underline;
   color: inherit;
 }
 
@@ -104,6 +103,8 @@ header {
 
 .header-title {
   font-family: var(--font-title);
+  font-weight: 400;
+  font-synthesis: none;
   font-size: 28px;
   line-height: 1;
   color: var(--orange);
@@ -193,16 +194,17 @@ section {
   object-fit: cover;
   border-radius: 8px;
   flex-shrink: 0;
-  background: radial-gradient(circle at 50% 62%,
-    rgba(96,156,255,1) 0%,
-    rgba(60,104,225,0.75) 34%,
-    rgba(20,32,80,0.1) 64%);
+  background: radial-gradient(circle at 50% 58%,
+    rgba(96,156,255,0.95) 0%,
+    rgba(60,104,225,0.55) 40%,
+    rgba(60,104,225,0) 72%);
 }
 
 .member-info h3 {
-  font-family: var(--font-body);
-  font-size: 16px;
-  font-weight: 700;
+  font-family: var(--font-title);
+  font-size: 18px;
+  font-weight: 400;
+  font-synthesis: none;
   font-style: normal;
   color: var(--orange);
   margin-bottom: 4px;
@@ -388,12 +390,12 @@ section {
   padding-left: 36px;
 }
 
-.timeline::before {
+.timeline-item:not(:last-child)::before {
   content: '';
   position: absolute;
-  left: 15px;
-  top: 0;
-  bottom: 0;
+  left: -21px;
+  top: 16px;
+  height: calc(100% + 28px);
   width: 2px;
   background: repeating-linear-gradient(
     to bottom,
@@ -418,6 +420,20 @@ section {
   object-fit: contain;
   border: 2px solid var(--white);
   border-radius: 50%;
+}
+
+.timeline-cta {
+  display: flex;
+  align-items: center;
+}
+
+.timeline-cta .timeline-marker {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.viaje .timeline-cta .btn {
+  margin-top: 0;
 }
 
 .timeline-card {
@@ -460,7 +476,7 @@ section {
 /* ─── BUTTONS ───────────────────────────────────────────────── */
 .btn {
   display: inline-block;
-  background: linear-gradient(135deg, var(--orange), var(--red-dark));
+  background: linear-gradient(135deg, rgba(232,96,10,0.75), rgba(139,0,0,0.75));
   color: var(--white);
   font-family: var(--font-body);
   font-size: 14px;
@@ -476,7 +492,7 @@ section {
 
 .btn:hover {
   transform: translateY(-1px);
-  background: linear-gradient(135deg, #ff7c2a, #a00000);
+  background: linear-gradient(135deg, rgba(255,124,42,0.85), rgba(160,0,0,0.85));
 }
 
 .btn-block {
@@ -500,7 +516,7 @@ section {
   align-items: center;
   margin-bottom: 24px;
   position: relative;
-  height: 110px;
+  height: 124px;
 }
 
 .albums-circles img {
@@ -509,7 +525,7 @@ section {
   border-radius: 50%;
   object-fit: cover;
   position: absolute;
-  border: 3px solid rgba(255,255,255,0.15);
+  border: none;
 }
 
 .albums-circles img:nth-child(1) {
@@ -520,7 +536,9 @@ section {
 
 .albums-circles img:nth-child(2) {
   left: 50%;
-  transform: translateX(-45px);
+  width: 120px;
+  height: 120px;
+  transform: translateX(-60px);
   z-index: 3;
 }
 
@@ -569,6 +587,8 @@ footer {
 
 .footer-title {
   font-family: var(--font-title);
+  font-weight: 400;
+  font-synthesis: none;
   font-size: 36px;
   line-height: 1;
   color: var(--orange);
@@ -582,31 +602,30 @@ footer {
 }
 
 .footer-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.1);
+  width: 32px;
+  height: 32px;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: opacity 0.2s;
 }
 
 .footer-icon:hover {
-  background: rgba(255,255,255,0.2);
+  opacity: 0.7;
 }
 
 .footer-icon svg {
-  width: 18px;
-  height: 18px;
-  fill: var(--white);
+  width: 26px;
+  height: 26px;
+  fill: #4a6ee0;
 }
 
 .footer-legal {
   font-size: 11px;
   line-height: 1.7;
-  color: var(--text-muted);
+  color: var(--orange);
 }
 
 /* ─── MEDIA QUERIES — TABLET (≥600px) ──────────────────────── */
@@ -676,7 +695,7 @@ footer {
   }
 
   .albums-circles {
-    height: 130px;
+    height: 144px;
   }
 
   .albums-circles img:nth-child(1) {
@@ -684,7 +703,9 @@ footer {
   }
 
   .albums-circles img:nth-child(2) {
-    transform: translateX(-55px);
+    width: 140px;
+    height: 140px;
+    transform: translateX(-70px);
   }
 
   .albums-circles img:nth-child(3) {
@@ -799,7 +820,7 @@ footer {
   }
 
   .albums-circles {
-    height: 150px;
+    height: 170px;
   }
 
   .albums-circles img:nth-child(1) {
@@ -807,7 +828,9 @@ footer {
   }
 
   .albums-circles img:nth-child(2) {
-    transform: translateX(-65px);
+    width: 165px;
+    height: 165px;
+    transform: translateX(-82.5px);
   }
 
   .albums-circles img:nth-child(3) {
