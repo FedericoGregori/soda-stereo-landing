@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Soda Stereo | La banda que cambió todo</title>
   <meta name="description" content="Homenaje a Soda Stereo y Gustavo Cerati: los pilares de la banda, su historia, el viaje y los álbumes de estudio del grupo más influyente del rock latinoamericano." />
+  <!-- Qué son los preconnects?
+  Los preconnects son una etiqueta que se usa para preconectar las fuentes de Google Fonts.
+  Es útil para mejorar la carga de la página.
+  -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Erica+One&family=Roboto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
@@ -29,8 +33,6 @@
      Aria-label es un atributo que se usa para describir el propósito de un elemento.
      Es útil para los usuarios que usan lectores de pantalla o que navegan con el teclado.
      Es una buena práctica para la accesibilidad.
-     Para verlo recargue la página y presione la tecla Tab.
-     El botón se verá como un botón de la barra de navegación.
      -->
     <button type="button" class="nav-icon nav-icon--menu" aria-label="Abrir menú de navegación">
       <i class="bi bi-list" aria-hidden="true"></i>
@@ -54,9 +56,19 @@
     <!-- ── PILARES ────────────────────────────────────────────────── -->
     <section class="pilares" aria-labelledby="pilares-title">
       <h2 class="section-title" id="pilares-title">Los <em>pilares</em> de Soda Stereo</h2>
+      <!-- Qué es role="list"?
+      Role es un atributo que se usa para describir el propósito de un elemento.
+      Es útil para los usuarios que usan lectores de pantalla o que navegan con el teclado.
+      Es una buena práctica para la accesibilidad.
+      -->
       <ul class="member-cards-grid" role="list">
 
         <li class="member-card">
+          <!-- Qué es loading="lazy" y decoding="async"?
+          Lazy loading es una técnica para cargar las imágenes cuando se necesitan.
+          Async decoding es una técnica para decodificar de forma asincrona quiere decir que la imagen se decodifica mientras se carga
+          sin bloquear la carga de la página.
+          -->
           <img src="img/member-cerati.png" alt="Retrato de Gustavo Cerati" loading="lazy" decoding="async" />
           <hgroup class="member-info">
             <h3>Gustavo Cerati</h3>
@@ -131,6 +143,10 @@
     </section>
 
     <!-- ── EL VIAJE ───────────────────────────────────────────────── -->
+     <!-- Qué es aria-labelledby?
+     Aria-labelledby es un atributo que se usa para describir el propósito de un elemento.
+     Es útil para los usuarios que usan lectores de pantalla o que navegan con el teclado.
+     -->
     <section class="viaje" aria-labelledby="viaje-title">
       <h2 class="timeline-title" id="viaje-title">El viaje</h2>
 
