@@ -1,10 +1,25 @@
 /* ─── RESET & BASE ─────────────────────────────────────────── */
+/* Qué es *::before y *::after?
+*::before y *::after son selectores que se usan para crear pseudo-elementos.
+Son útiles para crear bordes, sombras, etc.
+En este caso el objetivo es resetear los estilos por defecto del navegador. 
+Esto ayuda a que el diseño sea consistente en todos los navegadores.
+Por ejemplo, el navegador por defecto tiene un margin y padding de 8px.
+*/
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* Qué es :root?
+:root es un selector que se usa para crear variables CSS.
+Es útil para crear variables CSS que se pueden reutilizar en todo el documento.
+En este caso se crean las variables CSS para el diseño de la página.
+Por ejemplo, el color de la letra es #ffffff.
+Pero se puede reutilizar en todo el documento con la variable --white.
+Es buena práctica para la mantenibilidad del código.
+*/
 :root {
   --orange:       #e8600a;
   --orange-light: #ff7c2a;
@@ -21,6 +36,10 @@
   --font-section: 'Roboto Serif', serif;
 }
 
+/* Qué es scroll-behavior: smooth?
+Scroll-behavior es un atributo que se usa para hacer que el scroll sea suave.
+Es útil para mejorar la experiencia del usuario.
+*/
 html {
   scroll-behavior: smooth;
 }
@@ -28,6 +47,10 @@ html {
 body {
   font-family: var(--font-body);
   color: var(--white);
+  /* Qué es background: linear-gradient?
+  background: linear-gradient es un atributo que se usa para hacer un degradado de color.
+  Es útil para hacer un degradado de color en el body.
+  */
   background: linear-gradient(
     to bottom,
     #000000 8%,
@@ -39,16 +62,26 @@ body {
     #0a1230 80%,
     #943a06 100%
   );
+  /* Qué es min-height: 100vh?
+  Min-height es un atributo que se usa para hacer que el body ocupe al menos la altura de la ventana del navegador.
+  */
   min-height: 100vh;
 }
 
 img {
+  /* Por qué usamos display: block y max-width: 100%?
+  Display: block es un tipo de display que se usa para definir un elemento como bloque.
+  Max-width: 100% es un atributo que se usa para hacer que el elemento ocupe el 100% del ancho de su contenedor.
+  */
   display: block;
   max-width: 100%;
 }
 
 a {
   text-decoration: underline;
+  /* Qué es color: inherit?
+  Color: inherit es un atributo que se usa para hacer que el color del texto sea el mismo que el color del texto del contenedor.
+  */
   color: inherit;
 }
 
@@ -71,6 +104,11 @@ a {
 }
 
 /* Foco visible para navegación con teclado (accesibilidad) */
+/* Qué es :focus-visible?
+:focus-visible es un selector que se usa para definir el estado de foco de un elemento.
+Es útil para definir el estado de foco de un elemento.
+Es una buena práctica para la accesibilidad.
+*/
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--orange);
@@ -79,6 +117,11 @@ button:focus-visible {
 }
 
 /* Respetar la preferencia de movimiento reducido */
+/* Qué es prefers-reduced-motion: reduce?
+prefers-reduced-motion: reduce es un atributo que se usa para definir la preferencia de movimiento reducido.
+Es útil para definir la preferencia de movimiento reducido.
+Es una buena práctica para la accesibilidad.
+*/
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -91,6 +134,15 @@ button:focus-visible {
 }
 
 /* ─── HEADER / NAV ──────────────────────────────────────────── */
+/* Por qué position: sticky?
+El header queda "pegado" arriba y sigue visible mientras se hace scroll.
+- top: 0 indica desde dónde se pega.
+- z-index: 100 lo mantiene por encima del resto del contenido.
+- backdrop-filter: blur desenfoca lo que pasa por detrás, así el título
+  siempre se lee bien.
+- display: flex + justify-content: space-between reparten los 3 elementos
+  (menú, título, carrito): uno a la izquierda, uno al centro y uno a la derecha.
+*/
 header {
   position: sticky;
   top: 0;
@@ -103,6 +155,8 @@ header {
   padding: 12px 16px;
 }
 
+/* Caja cuadrada del ícono. flex + center centran el ícono adentro.
+flex-shrink: 0 evita que la caja se achique cuando el título del medio crece. */
 .nav-icon {
   width: 44px;
   height: 44px;
@@ -132,6 +186,10 @@ header {
   color: var(--orange);
 }
 
+/* Por qué font-synthesis: none?
+La fuente Erica One solo existe en un grosor (400). Si le pedimos negrita,
+el navegador la "engrosa" artificialmente (negrita falsa) y queda fea/borrosa.
+font-synthesis: none se lo impide y la deja como fue diseñada. */
 .header-title {
   font-family: var(--font-title);
   font-weight: 400;
@@ -156,6 +214,21 @@ header {
   height: auto;
 }
 
+/* Por qué animamos el logo de Soda Stereo?
+La idea es que desaparezca cuando el usuario hace scroll hacia abajo.
+
+Cómo se posiciona:
+- position: absolute lo saca del flujo para poder ubicarlo libremente.
+- top negativo lo sube de modo que quede mitad sobre el hero y mitad sobre
+  el header (queda "montado" en el borde). z-index: 101 lo deja por encima.
+- left: 50% + translateX(-50%) es el truco para centrarlo horizontalmente.
+
+Cómo se desvanece SIN JavaScript:
+- animation-timeline: scroll(root) liga el avance de la animación al scroll
+  de la página (en vez de al tiempo).
+- animation-range: 0 60px hace que la animación se complete en los primeros
+  60px de scroll, momento en el que el logo llega a opacity: 0.
+*/
 .hero .hero-logo {
   position: absolute;
   top: -11.5px;
@@ -207,6 +280,9 @@ section {
   list-style: none;
 }
 
+/* Tarjeta de integrante. En celular es una fila (flex): foto a la izquierda
+y texto a la derecha, separados por gap. El fondo es un degradado azul
+semitransparente (rgba) para que combine con el fondo de la página. */
 .member-card {
   display: flex;
   align-items: center;
@@ -223,6 +299,12 @@ section {
   text-align: left;
 }
 
+/* "Aura" azul detrás de la foto del integrante.
+Las fotos son PNG con el fondo recortado (transparente), así que este
+radial-gradient se ve por detrás. Va de azul brillante en el centro a
+totalmente transparente (alpha 0) en los bordes, para que se funda con la
+tarjeta y NO se note el rectángulo de la imagen.
+object-fit: cover hace que la foto llene el cuadrado sin deformarse. */
 .member-card img {
   width: 84px;
   height: 84px;
@@ -341,6 +423,8 @@ section {
   padding-left: 6px;
 }
 
+/* La viñeta (•) se crea con un pseudo-elemento en vez de usar una lista,
+así podemos darle un color (naranja) distinto al del texto. */
 .bullet-text::before {
   content: '• ';
   color: var(--orange);
@@ -352,7 +436,10 @@ section {
   font-style: italic;
 }
 
-/* Band photo card */
+/* Band photo card: tarjeta naranja con 3 fotos en abanico y el logo.
+- position: relative + height fijo: es el "marco" dentro del cual ubicamos
+  las fotos y el logo en posición absoluta.
+- overflow: hidden recorta lo que se sale del marco (las puntas de las fotos). */
 .band-photo-card {
   background: #ca4f07;
   border: 1px solid rgba(255,255,255,0.12);
@@ -385,6 +472,10 @@ section {
   border: none;
 }
 
+/* Las 3 fotos están una encima de otra (position: absolute) y se "abren"
+en abanico: rotate las inclina y translateX las separa hacia los costados.
+z-index define el orden de apilado: las laterales (1 y 3) quedan por encima
+de la del medio (2), que tiene z-index más bajo. */
 .band-photo-card .photo-stack img:nth-child(1) {
   transform: rotate(-5deg) translateX(-120px) translateY(-15px);
   z-index: 3;
@@ -426,6 +517,14 @@ section {
   list-style: none;
 }
 
+/* Línea punteada vertical que une cada disco con el siguiente.
+- :not(:last-child) hace que NO se dibuje en el último item, así no queda
+  una línea sobrante colgando debajo del último disco.
+- repeating-linear-gradient crea el punteado: 6px naranja, 6px transparente,
+  y se repite.
+- top: 16px arranca en el centro del disco (que mide 32px).
+- height: calc(100% + 28px) estira la línea hasta el disco de abajo
+  (28px es la separación —margin-bottom— entre items). */
 .timeline-item:not(:last-child)::before {
   content: '';
   position: absolute;
@@ -481,6 +580,8 @@ section {
   box-shadow: 0 25px 45px rgba(0,0,0,0.18);
 }
 
+/* "Badge" del año. position: absolute + top negativo lo ubican apenas por
+fuera del borde superior de la tarjeta, montado sobre el borde. */
 .timeline-year {
   position: absolute;
   top: -13px;
@@ -510,6 +611,12 @@ section {
 }
 
 /* ─── BUTTONS ───────────────────────────────────────────────── */
+/* Botón tipo "pill" (bordes muy redondeados).
+- display: inline-block hace que el ancho se ajuste al texto (no ocupa toda
+  la fila) y permite alinearlo a la izquierda.
+- El gradiente usa rgba con transparencia (0.75) para que se vea un poco el
+  fondo de la página por detrás.
+- transition suaviza el cambio al pasar el mouse (ver .btn:hover). */
 .btn {
   display: inline-block;
   background: linear-gradient(135deg, rgba(232,96,10,0.75), rgba(139,0,0,0.75));
@@ -546,6 +653,8 @@ section {
 }
 
 /* ─── ÁLBUMES ───────────────────────────────────────────────── */
+/* Los 3 discos se superponen. El contenedor es relative + altura fija para
+poder posicionar las imágenes en absolute por encima. */
 .albums-circles {
   display: flex;
   justify-content: center;
@@ -558,12 +667,15 @@ section {
 .albums-circles img {
   width: 90px;
   height: 90px;
-  border-radius: 50%;
+  border-radius: 50%; /* círculo perfecto */
   object-fit: cover;
   position: absolute;
   border: none;
 }
 
+/* Cada disco: left: 50% lo lleva al centro y translateX lo corre a su lugar
+(negativo = izquierda, positivo = derecha). El del medio (nth-child 2) es más
+grande (120px) y tiene el z-index más alto para quedar al frente. */
 .albums-circles img:nth-child(1) {
   left: 50%;
   transform: translateX(-120px);
@@ -595,6 +707,8 @@ section {
   margin-bottom: 12px;
 }
 
+/* display: block hace que el número quede en su propia línea, arriba del
+texto (un <span> normalmente es inline y quedaría al lado). */
 .stat-card .stat-number {
   display: block;
   font-size: 20px;
@@ -614,21 +728,24 @@ section {
 }
 
 /* ─── FOOTER ────────────────────────────────────────────────── */
+/* Layout del footer con flexbox (sin grid):
+Queremos: "GRACIAS TOTALES" a la izquierda, las redes a la derecha, y el
+texto legal abajo ocupando todo el ancho.
+- flex-wrap: wrap permite que los elementos pasen a una segunda fila.
+- .footer-social usa margin-left: auto para empujarse a la derecha.
+- .footer-legal usa flex-basis: 100% para ocupar toda la fila, por lo que
+  "se baja" solo a la línea de abajo. */
 footer {
   background: rgba(0, 0, 0, 0.85);
   padding: 36px 16px 30px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-areas:
-    "title social"
-    "legal legal";
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
   column-gap: 16px;
   row-gap: 20px;
-  align-items: start;
 }
 
 .footer-title {
-  grid-area: title;
   font-family: var(--font-title);
   font-weight: 400;
   font-synthesis: none;
@@ -638,8 +755,9 @@ footer {
   letter-spacing: 2px;
 }
 
+/* margin-left: auto "empuja" las redes hacia la derecha del footer. */
 .footer-social {
-  grid-area: social;
+  margin-left: auto;
 }
 
 .footer-icons {
@@ -671,14 +789,25 @@ footer {
   line-height: 1;
 }
 
+/* flex-basis: 100% hace que ocupe toda la fila y caiga a la línea de abajo. */
 .footer-legal {
-  grid-area: legal;
+  flex-basis: 100%;
   font-size: 11px;
   line-height: 1.7;
   color: var(--orange);
 }
 
-/* ─── MEDIA QUERIES — TABLET (≥600px) ──────────────────────── */
+/* ─── MEDIA QUERIES ─────────────────────────────────────────── */
+/* DISEÑO MOBILE-FIRST:
+Todos los estilos de ARRIBA están pensados para celular (pantalla chica).
+Estos bloques @media (min-width: ...) AGREGAN o AJUSTAN estilos a partir de
+cierto ancho de pantalla, sin reescribir todo:
+- min-width: 600px  → tablets en adelante
+- min-width: 1024px → escritorio en adelante
+Es decir, primero diseñamos para lo más chico y vamos sumando mejoras a
+medida que hay más espacio. */
+
+/* ─── TABLET (≥600px) ──────────────────────────────────────── */
 @media (min-width: 600px) {
   header {
     padding: 14px 32px;
@@ -777,6 +906,9 @@ footer {
     font-size: 42px;
   }
 
+  /* En pantallas grandes limitamos el ancho de las secciones a 900px y las
+  centramos (margin: 0 auto) para que el texto no quede demasiado ancho y
+  sea más cómodo de leer. */
   section {
     padding: 60px 80px;
     max-width: 900px;
@@ -787,6 +919,9 @@ footer {
     margin-bottom: 60px;
   }
 
+  /* Centra el contenido del footer a un máximo de 900px, pero mantiene el
+  fondo negro ocupando todo el ancho. El truco: padding lateral dinámico
+  = la mitad del espacio sobrante a cada lado (con un mínimo de 80px). */
   footer {
     padding: 48px max(80px, calc((100% - 900px) / 2)) 32px;
   }
@@ -795,6 +930,9 @@ footer {
     font-size: 12px;
   }
 
+  /* En desktop fijamos una altura al hero y usamos object-fit: cover para que
+  la imagen llene ese espacio sin deformarse (recorta lo que sobra). En celular
+  el hero crece según la altura natural de la imagen. */
   .hero {
     height: 460px;
   }
@@ -809,13 +947,16 @@ footer {
     width: 60px;
   }
 
+  /* En desktop, las 3 tarjetas pasan a estar en una fila (flex).
+  flex: 1 en cada una hace que ocupen el mismo ancho (un tercio cada una).
+  flex-direction: column acomoda la foto arriba y el texto abajo. */
   .member-cards-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
     gap: 16px;
   }
 
   .member-card {
+    flex: 1;
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 0;
@@ -880,13 +1021,14 @@ footer {
     transform: translateX(40px);
   }
 
+  /* Mismo criterio que las tarjetas de miembros: 3 columnas iguales con flex. */
   .stats-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
     gap: 16px;
   }
 
   .stat-card {
+    flex: 1;
     margin-bottom: 0;
   }
 
