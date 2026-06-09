@@ -148,8 +148,7 @@ a {
 Es útil para definir el estado de foco de un elemento.
 Es una buena práctica para la accesibilidad.
 */
-a:focus-visible,
-button:focus-visible {
+a:focus-visible {
   outline: 2px solid var(--orange);
   outline-offset: 2px;
   border-radius: 4px;
@@ -213,12 +212,12 @@ flex-shrink: 0 evita que la caja se achique cuando el título del medio crece. *
   box-shadow: 0 12px 22px rgba(0,0,0,0.25);
 }
 
-.nav-icon i {
+.nav-icon span {
   font-size: 20px;
   line-height: 1;
 }
 
-.nav-icon--menu i {
+.nav-icon--menu span {
   color: var(--white);
 }
 
@@ -450,7 +449,7 @@ object-fit: cover hace que la foto llene el cuadrado sin deformarse. */
   box-shadow: 0 14px 30px rgba(0,0,0,0.22);
 }
 
-.quote-card blockquote {
+.quote-card .quote-text {
   font-size: 15px;
   font-style: italic;
   font-weight: 400;
@@ -459,7 +458,7 @@ object-fit: cover hace que la foto llene el cuadrado sin deformarse. */
   margin-bottom: 10px;
 }
 
-.quote-card cite {
+.quote-card .quote-author {
   font-size: 13px;
   color: var(--orange);
   font-style: normal;
@@ -527,14 +526,14 @@ así podemos darle un color (naranja) distinto al del texto. */
 - repeating-linear-gradient crea el punteado: 6px naranja, 6px transparente,
   y se repite.
 - top: 16px arranca en el centro del disco (que mide 32px).
-- height: calc(100% + 28px) estira la línea hasta el disco de abajo
-  (28px es la separación —margin-bottom— entre items). */
+- bottom: -28px estira la línea hasta el disco de abajo (28px es el
+  margin-bottom entre items). */
 .timeline-item:not(:last-child)::before {
   content: '';
   position: absolute;
   left: -21px;
   top: 16px;
-  height: calc(100% + 28px);
+  bottom: -28px;
   width: 2px;
   background: repeating-linear-gradient(
     to bottom,
@@ -733,6 +732,8 @@ texto (un <span> normalmente es inline y quedaría al lado). */
 
 /* ─── FOOTER ────────────────────────────────────────────────── */
 /* Layout del footer con flexbox (sin grid):
+El <footer> ocupa todo el ancho y lleva el fondo negro.
+Dentro, .footer-inner limita y centra el contenido (igual que las section).
 Queremos: "GRACIAS TOTALES" a la izquierda, las redes a la derecha, y el
 texto legal abajo ocupando todo el ancho.
 - flex-wrap: wrap permite que los elementos pasen a una segunda fila.
@@ -741,6 +742,9 @@ texto legal abajo ocupando todo el ancho.
   "se baja" solo a la línea de abajo. */
 footer {
   background: rgba(0, 0, 0, 0.85);
+}
+
+.footer-inner {
   padding: 36px 16px 30px;
   display: flex;
   flex-wrap: wrap;
@@ -787,7 +791,7 @@ footer {
   opacity: 0.7;
 }
 
-.footer-icon i {
+.footer-icon span {
   font-size: 26px;
   color: var(--blue);
   line-height: 1;
@@ -898,10 +902,11 @@ medida que hay más espacio. */
   }
 
   /* Centra el contenido del footer a un máximo de 900px, pero mantiene el
-  fondo negro ocupando todo el ancho. El truco: padding lateral dinámico
-  = la mitad del espacio sobrante a cada lado (con un mínimo de 80px). */
-  footer {
-    padding: 48px max(80px, calc((100% - 900px) / 2)) 32px;
+  fondo negro ocupando todo el ancho (mismo criterio que las section). */
+  .footer-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 80px 32px;
   }
 
   .footer-legal {
