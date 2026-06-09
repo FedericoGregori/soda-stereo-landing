@@ -1,5 +1,5 @@
 /* ─── FUENTES LOCALES ───────────────────────────────────────── */
-/* Las fuentes las entregó More en fonts/. @font-face le dice al navegador
+/* Fuentes en fonts/. @font-face le dice al navegador
 dónde encontrar cada archivo. font-display: swap muestra texto con fuente
 de respaldo mientras carga, y luego cambia a la fuente real. */
 @font-face {
@@ -205,9 +205,11 @@ flex-shrink: 0 evita que la caja se achique cuando el título del medio crece. *
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  margin: 0;
   cursor: pointer;
   flex-shrink: 0;
   appearance: none;
@@ -225,9 +227,18 @@ flex-shrink: 0 evita que la caja se achique cuando el título del medio crece. *
   color: var(--white);
 }
 
-.nav-icon--cart i {
-  font-size: 22px;
-  color: var(--orange);
+.nav-icon--cart {
+  position: relative;
+}
+
+.nav-icon--cart img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -58%);
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
 }
 
 /* Por qué font-synthesis: none?
@@ -480,70 +491,24 @@ así podemos darle un color (naranja) distinto al del texto. */
   font-style: italic;
 }
 
-/* Band photo card: tarjeta naranja con 3 fotos en abanico y el logo.
-- position: relative + height fijo: es el "marco" dentro del cual ubicamos
-  las fotos y el logo en posición absoluta.
-- overflow: hidden recorta lo que se sale del marco (las puntas de las fotos). */
+/* Band photo card: imagen compuesta (fotos + logo). */
 .band-photo-card {
-  background: #ca4f07;
-  border: 1px solid rgba(255,255,255,0.12);
+  width: 100%;
+  margin: 0;
+  background: #a54328d7;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 20px;
-  padding: 20px;
-  position: relative;
-  height: 220px;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  box-shadow: 0 30px 70px rgba(0,0,0,0.35);
-}
-
-.band-photo-card .photo-stack {
-  position: absolute;
-  inset: 0;
+  padding: 35px 0 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateY(1px);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
 }
 
-.band-photo-card .photo-stack img {
-  position: absolute;
-  width: 110px;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 4px;
-  border: none;
-}
-
-/* Las 3 fotos están una encima de otra (position: absolute) y se "abren"
-en abanico: rotate las inclina y translateX las separa hacia los costados.
-z-index define el orden de apilado: las laterales (1 y 3) quedan por encima
-de la del medio (2), que tiene z-index más bajo. */
-.band-photo-card .photo-stack img:nth-child(1) {
-  transform: rotate(-5deg) translateX(-120px) translateY(-15px);
-  z-index: 3;
-}
-
-.band-photo-card .photo-stack img:nth-child(2) {
-  width: 170px;
-  height: 110px;
-  transform: rotate(0deg);
-  z-index: 1;
-}
-
-.band-photo-card .photo-stack img:nth-child(3) {
-  transform: rotate(5deg) translateX(120px) translateY(-15px);
-  z-index: 2;
-}
-
-.band-photo-card .soda-logo {
-  position: absolute;
-  bottom: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  z-index: 3;
+.band-photo-card img {
+  width: 70%;
+  height: auto;
+  display: block;
 }
 
 /* ─── TIMELINE ──────────────────────────────────────────────── */
@@ -886,32 +851,6 @@ medida que hay más espacio. */
     font-size: 72px;
   }
 
-  .band-photo-card {
-    height: 240px;
-  }
-
-  .band-photo-card .photo-stack img {
-    width: 140px;
-    height: 175px;
-  }
-
-  .band-photo-card .photo-stack img:nth-child(1) {
-    transform: rotate(-8deg) translateX(-140px);
-  }
-
-  .band-photo-card .photo-stack img:nth-child(2) {
-    width: 190px;
-    height: 140px;
-  }
-
-  .band-photo-card .photo-stack img:nth-child(3) {
-    transform: rotate(7deg) translateX(140px);
-  }
-
-  .band-photo-card .soda-logo {
-    width: 130px;
-  }
-
   .albums-circles img {
     width: 110px;
     height: 110px;
@@ -1014,28 +953,6 @@ medida que hay más espacio. */
 
   .year-number {
     font-size: 88px;
-  }
-
-  .band-photo-card {
-    height: 280px;
-  }
-
-  .band-photo-card .photo-stack img {
-    width: 160px;
-    height: 200px;
-  }
-
-  .band-photo-card .photo-stack img:nth-child(1) {
-    transform: rotate(-8deg) translateX(-165px);
-  }
-
-  .band-photo-card .photo-stack img:nth-child(2) {
-    width: 220px;
-    height: 160px;
-  }
-
-  .band-photo-card .photo-stack img:nth-child(3) {
-    transform: rotate(7deg) translateX(165px);
   }
 
   .timeline {
