@@ -94,25 +94,17 @@ html {
 body {
   font-family: var(--font-body);
   color: var(--white);
-  /* Qué es background: linear-gradient?
-  background: linear-gradient es un atributo que se usa para hacer un degradado de color.
-  Es útil para hacer un degradado de color en el body.
-  */
-  background: linear-gradient(
-    to bottom,
-    #000000 8%,
-    #943a06 15%,
-    var(--navy) 30%,
-    #943a06 50%,
-    #26358a 55%,
-    #14224e 60%,
-    #0a1230 80%,
-    #943a06 100%
-  );
-  /* Qué es min-height: 100vh?
-  Min-height es un atributo que se usa para hacer que el body ocupe al menos la altura de la ventana del navegador.
-  */
+  background-color: #000;
   min-height: 100vh;
+}
+
+/* Background de la página. Inicia despues del hero y termina en el footer. */
+.page-background {
+  background-color: var(--navy-dark);
+  background-image: url('img/background.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: top center;
 }
 
 img {
