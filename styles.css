@@ -60,20 +60,23 @@ Por ejemplo, el navegador por defecto tiene un margin y padding de 8px.
 :root es un selector que se usa para crear variables CSS.
 Es útil para crear variables CSS que se pueden reutilizar en todo el documento.
 En este caso se crean las variables CSS para el diseño de la página.
-Por ejemplo, el color de la letra es #ffffff.
+Por ejemplo, el color principal de texto es #F6F6F6.
 Pero se puede reutilizar en todo el documento con la variable --white.
 Es buena práctica para la mantenibilidad del código.
 */
 :root {
-  --orange:       #e8600a;
-  --orange-light: #ff7c2a;
+  --orange:       #F94B26;
+  --orange-rgb:   249, 75, 38;
+  --orange-light: #ff6347;
+  --blue:         #3357C6;
+  --blue-rgb:     51, 87, 198;
   --yellow:       #f5c518;
   --red-dark:     #8B0000;
   --navy:         #0d1b4b;
   --navy-card:    #1a2560;
   --navy-dark:    #0a0f2e;
   --maroon:       #3d1a0a;
-  --white:        #ffffff;
+  --white:        #F6F6F6;
   --text-muted:   #cccccc;
   --font-title:   'Erica One', system-ui, cursive;
   --font-body:    'Roboto Serif', serif;
@@ -254,7 +257,7 @@ font-synthesis: none se lo impide y la deja como fue diseñada. */
   color: var(--orange);
   text-align: center;
   letter-spacing: 2px;
-  text-shadow: 0 2px 12px rgba(232, 96, 10, 0.35);
+  text-shadow: 0 2px 12px rgba(var(--orange-rgb), 0.35);
 }
 
 /* ─── HERO ──────────────────────────────────────────────────── */
@@ -367,9 +370,9 @@ object-fit: cover hace que la foto llene el cuadrado sin deformarse. */
   border-radius: 8px;
   flex-shrink: 0;
   background: radial-gradient(circle at 50% 58%,
-    rgba(96,156,255,0.95) 0%,
-    rgba(60,104,225,0.55) 40%,
-    rgba(60,104,225,0) 72%);
+    rgba(var(--blue-rgb), 0.95) 0%,
+    rgba(var(--blue-rgb), 0.55) 40%,
+    rgba(var(--blue-rgb), 0) 72%);
 }
 
 .member-info h3 {
@@ -495,7 +498,7 @@ así podemos darle un color (naranja) distinto al del texto. */
 .band-photo-card {
   width: 100%;
   margin: 0;
-  background: #a54328d7;
+  background: rgba(var(--orange-rgb), 0.84);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 20px;
   padding: 35px 0 0 0;
@@ -596,7 +599,7 @@ fuera del borde superior de la tarjeta, montado sobre el borde. */
   top: -13px;
   left: 0px;
   display: inline-block;
-  background: rgba(232,96,10,0.7);
+  background: rgba(var(--orange-rgb), 0.7);
   color: var(--white);
   font-size: 11px;
   font-weight: 700;
@@ -628,7 +631,7 @@ fuera del borde superior de la tarjeta, montado sobre el borde. */
 - transition suaviza el cambio al pasar el mouse (ver .btn:hover). */
 .btn {
   display: inline-block;
-  background: linear-gradient(135deg, rgba(232,96,10,0.75), rgba(139,0,0,0.75));
+  background: linear-gradient(135deg, rgba(var(--orange-rgb), 0.75), rgba(139, 0, 0, 0.75));
   color: var(--white);
   font-family: var(--font-body);
   font-size: 14px;
@@ -639,12 +642,12 @@ fuera del borde superior de la tarjeta, montado sobre el borde. */
   cursor: pointer;
   margin-top: 8px;
   transition: transform 0.2s ease, background 0.2s ease;
-  box-shadow: 0 18px 30px rgba(232,96,10,0.35);
+  box-shadow: 0 18px 30px rgba(var(--orange-rgb), 0.35);
 }
 
 .btn:hover {
   transform: translateY(-1px);
-  background: linear-gradient(135deg, rgba(255,124,42,0.85), rgba(160,0,0,0.85));
+  background: linear-gradient(135deg, rgba(var(--orange-rgb), 0.85), rgba(160, 0, 0, 0.85));
 }
 
 .btn-block {
@@ -794,7 +797,7 @@ footer {
 
 .footer-icon i {
   font-size: 26px;
-  color: #4a6ee0;
+  color: var(--blue);
   line-height: 1;
 }
 
