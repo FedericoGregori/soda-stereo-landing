@@ -1,3 +1,47 @@
+/* ─── FUENTES LOCALES ───────────────────────────────────────── */
+/* Las fuentes las entregó More en fonts/. @font-face le dice al navegador
+dónde encontrar cada archivo. font-display: swap muestra texto con fuente
+de respaldo mientras carga, y luego cambia a la fuente real. */
+@font-face {
+  font-family: 'Erica One';
+  src: url('fonts/erica-one/EricaOne-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto Serif';
+  src: url('fonts/roboto-serif/RobotoSerif-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto Serif';
+  src: url('fonts/roboto-serif/RobotoSerif-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto Serif';
+  src: url('fonts/roboto-serif/RobotoSerif-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto Serif';
+  src: url('fonts/roboto-serif/RobotoSerif-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* ─── RESET & BASE ─────────────────────────────────────────── */
 /* Qué es *::before y *::after?
 *::before y *::after son selectores que se usan para crear pseudo-elementos.
