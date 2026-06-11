@@ -2,15 +2,23 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
+  <!-- viewport: imprescindible para el diseño responsive. Le dice al celular
+  que use su ancho real de pantalla en vez de simular una pantalla grande. -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Soda Stereo | La banda que cambió todo</title>
+  <!-- description: el texto que muestran los buscadores debajo del título. -->
   <meta name="description" content="Homenaje a Soda Stereo: los pilares de la banda, su historia, el viaje y los álbumes de estudio del grupo más influyente del rock latinoamericano." />
+  <!-- Bootstrap Icons: librería de íconos que funciona como una fuente.
+  Cada ícono es un <span> con la clase "bi bi-nombre" (ej: bi-instagram). -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
   <!-- ── HEADER ─────────────────────────────────────────────────── -->
+  <!-- Tres elementos en fila (flex en el CSS): menú, título y carrito.
+  Usamos <a> en vez de <button> porque son enlaces de navegación.
+  El título linkea a index.html para poder volver a la página principal. -->
   <header>
     <a href="#" class="nav-icon nav-icon--menu">
       <span class="bi bi-list"></span>
@@ -33,6 +41,8 @@
     <div class="page-background">
 
       <!-- ── PILARES ────────────────────────────────────────────────── -->
+      <!-- Lista <ul> porque los integrantes no tienen un orden específico.
+      Cada <li> es una card con foto y texto, armada con flexbox en el CSS. -->
       <section class="pilares">
         <h2 class="section-title">Los <em>pilares</em> de Soda Stereo</h2>
         <ul class="member-cards-grid">
@@ -107,6 +117,9 @@
       </section>
 
       <!-- ── EL VIAJE ───────────────────────────────────────────────── -->
+      <!-- Timeline: usamos <ol> porque los hechos tienen orden cronológico.
+      Cada item tiene un disco como marcador y una card con el contenido.
+      La línea punteada que los une se dibuja desde el CSS. -->
       <section class="viaje">
         <h2 class="timeline-title">El viaje</h2>
 
@@ -184,6 +197,8 @@
   </main>
 
   <!-- ── FOOTER ─────────────────────────────────────────────────── -->
+  <!-- Todo apilado y centrado en columna (flex-direction: column en el CSS):
+  título, íconos de redes y texto legal. -->
   <footer>
     <div class="footer-inner">
       <p class="footer-title">GRACIAS<br>TOTALES</p>

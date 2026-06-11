@@ -66,6 +66,9 @@ Es buena práctica para la mantenibilidad del código.
 */
 :root {
   --orange:       #F94B26;
+  /* Las variables que terminan en -rgb guardan el color como tres números
+  (rojo, verde, azul). Eso nos permite usarlas dentro de rgba() para sumarle
+  transparencia: rgba(var(--orange-rgb), 0.35) = naranja al 35% de opacidad. */
   --orange-rgb:   249, 75, 38;
   --orange-light: #ff6347;
   --blue:         #3357C6;
@@ -87,10 +90,14 @@ body {
   font-family: var(--font-body);
   color: var(--white);
   background-color: #000;
+  /* min-height: 100vh = el body mide como mínimo el alto de la pantalla
+  (vh = "viewport height", 100vh es el 100% del alto visible). */
   min-height: 100vh;
 }
 
-/* Background de la página. Inicia despues del hero y termina en el footer. */
+/* Background de la página. Inicia despues del hero y termina en el footer.
+background-size: 100% 100% estira la imagen para cubrir exactamente todo el
+ancho y alto del contenedor, así el degradado acompaña el largo de la página. */
 .page-background {
   background-color: var(--navy-dark);
   background-image: url('img/background.png');
@@ -148,7 +155,6 @@ flex-shrink: 0 evita que la caja se achique cuando el título del medio crece. *
   margin: 0;
   cursor: pointer;
   flex-shrink: 0;
-  appearance: none;
   background: rgba(0, 0, 0, 0.35);
   border: 1px solid rgba(255,255,255,0.15);
   box-shadow: 0 12px 22px rgba(0,0,0,0.25);
@@ -163,6 +169,11 @@ flex-shrink: 0 evita que la caja se achique cuando el título del medio crece. *
   color: var(--white);
 }
 
+/* El ícono del carrito es una imagen (no una fuente de íconos), así que la
+centramos a mano: el contenedor es relative y la imagen absolute.
+top/left: 50% lleva la esquina de la imagen al centro de la caja, y
+transform la corre para que quede centrada visualmente (los porcentajes
+están apenas ajustados porque el dibujo del carrito no es simétrico). */
 .nav-icon--cart {
   position: relative;
 }
@@ -211,6 +222,8 @@ font-synthesis: none se lo impide y la deja como fue diseñada. */
 }
 
 /* ─── SECTION WRAPPER ───────────────────────────────────────── */
+/* Padding compartido por todas las secciones: 32px arriba/abajo y 16px a
+los costados. En las media queries de abajo este valor crece. */
 section {
   padding: 32px 16px;
 }
@@ -698,11 +711,14 @@ para que respete los bordes redondeados del contenedor. */
 /* ─── CARRUSEL DE VINILOS (Obra solista) ────────────────────── */
 /* Adaptado de https://codepen.io/YousifW/pen/LKBxZX
 Cada vinilo es una imagen rectangular (funda + disco). Solo 3 se ven:
-active (centro, más grande), prev (izq) y next (der). */
+active (centro, más grande), prev (izq) y next (der). El JavaScript del
+final de index.html es el que cambia estas clases al apretar las flechas. */
 .vinilo-carousel {
   margin-bottom: 24px;
 }
 
+/* El "escenario" del carrusel: una caja con altura fija y position: relative,
+para que los items (que son absolute) se posicionen respecto a ella. */
 .vinilo-carousel-items {
   position: relative;
   width: 100%;
@@ -711,6 +727,11 @@ active (centro, más grande), prev (izq) y next (der). */
   margin: 0 auto;
 }
 
+/* Estado por defecto de TODOS los items: apilados en el centro de la caja
+e invisibles (opacity: 0). top/left: 50% + translate(-50%, -50%) es la
+técnica clásica para centrar un elemento absolute.
+transition anima cualquier cambio (posición, tamaño, opacidad) en 300ms:
+por eso cuando el JavaScript cambia las clases, el movimiento se ve suave. */
 .vinilo-carousel .carousel-item {
   position: absolute;
   top: 50%;
@@ -733,6 +754,8 @@ active (centro, más grande), prev (izq) y next (der). */
   height: auto;
 }
 
+/* El item activo es el único totalmente visible y el más grande.
+z-index alto para que quede por encima de los laterales. */
 .vinilo-carousel .carousel-item.active {
   width: 180px;
   opacity: 1;
@@ -885,8 +908,10 @@ del elemento, pero como está rotado 180° se ve abajo. */
 }
 
 /* ─── SODA STEREO (sección en la main) ──────────────────────── */
-/* Carrusel de portadas circulares de álbumes de Soda Stereo.
-Misma lógica que el carrusel de vinilos, pero imágenes cuadradas/circulares. */
+/* Carrusel de portadas de álbumes de Soda Stereo. Funciona EXACTAMENTE igual
+que el carrusel de vinilos (ver comentarios de arriba); la única diferencia
+es que acá las imágenes son cuadradas y las redondeamos con
+border-radius: 50% para que se vean como discos. */
 .disco-carousel {
   margin-bottom: 24px;
 }
@@ -918,6 +943,8 @@ Misma lógica que el carrusel de vinilos, pero imágenes cuadradas/circulares. *
   height: 100%;
 }
 
+/* object-fit: cover hace que la imagen llene el círculo sin deformarse
+(recorta lo que sobra), y border-radius: 50% la vuelve circular. */
 .disco-carousel .carousel-item img {
   display: block;
   width: 100%;
@@ -933,6 +960,8 @@ Misma lógica que el carrusel de vinilos, pero imágenes cuadradas/circulares. *
   z-index: 99;
 }
 
+/* Los laterales se anclan a los bordes del contenedor (left: 0 / right: 0),
+chicos y semitransparentes, igual que en el carrusel de vinilos. */
 .disco-carousel .carousel-item.prev {
   width: 72px;
   height: 72px;
