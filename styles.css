@@ -788,12 +788,20 @@ chicos y con espacio respecto al disco activo, sin superponerse. */
 }
 
 /* ─── UNA VIDA EN MÚSICA ────────────────────────────────────── */
-/* Card azul grande que contiene el título, la lista de hitos y el botón. */
+/* La sección no tiene padding izquierdo: la card "sale" hacia el borde
+de la pantalla, como en el diseño de More. */
+section.vida {
+  padding-left: 0;
+}
+
+/* Card con borde solo arriba, derecha y abajo. Sin borde ni radio a la
+izquierda, para que parezca que continúa fuera de la pantalla. */
 .vida-card {
   background: linear-gradient(180deg, rgba(86,108,200,0.4), rgba(64,88,170,0.4));
   border: 1px solid rgba(120, 150, 255, 0.55);
-  border-radius: 24px;
-  padding: 28px 22px;
+  border-left: none;
+  border-radius: 0 24px 24px 0;
+  padding: 28px 22px 28px 28px;
   box-shadow: 0 14px 30px rgba(0,0,0,0.22);
 }
 
@@ -807,12 +815,23 @@ chicos y con espacio respecto al disco activo, sin superponerse. */
 }
 
 /* Cada hito es una fila flex: año rotado a la izquierda, texto a la derecha.
-flex-shrink: 0 evita que el año se achique cuando el texto es largo. */
+align-items: flex-start alinea el último dígito del año (arriba) con la
+primera línea del texto, en vez de centrar verticalmente. */
 .vida-item {
   display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 32px;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 44px;
+}
+
+.vida-item:last-child {
+  margin-bottom: 12px;
+}
+
+/* Separación clara entre el último hito y el botón (el punto del año
+sigue un poco más abajo que el texto, por eso hace falta más aire). */
+.vida-card .btn {
+  margin-top: 32px;
 }
 
 /* El año va en vertical, leyéndose de abajo hacia arriba.
@@ -825,6 +844,7 @@ flex-shrink: 0 evita que el año se achique cuando el texto es largo. */
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 1px;
+  line-height: 1;
   color: var(--orange);
   flex-shrink: 0;
 }
@@ -848,18 +868,11 @@ del elemento, pero como está rotado 180° se ve abajo. */
   font-weight: 700;
   line-height: 1.5;
   color: var(--white);
+  padding-top: 2px;
 }
 
 .vida-item p em {
   font-style: italic;
-}
-
-/* Botón dentro de la card, con borde naranja visible como en el diseño. */
-.vida-card .btn {
-  border: 2px solid var(--orange-light);
-  font-size: 16px;
-  padding: 14px 30px;
-  margin-top: 8px;
 }
 
 /* ─── SODA STEREO (sección en la main) ──────────────────────── */
@@ -1053,6 +1066,10 @@ medida que hay más espacio. */
     padding: 40px 32px;
   }
 
+  section.vida {
+    padding-left: 0;
+  }
+
   .pilares .section-title {
     margin-bottom: 40px;
   }
@@ -1157,6 +1174,15 @@ medida que hay más espacio. */
     padding: 60px 80px;
     max-width: 900px;
     margin: 0 auto;
+  }
+
+  section.vida {
+    padding-left: 0;
+  }
+
+  .vida-card {
+    border-radius: 0 28px 28px 0;
+    padding-left: 36px;
   }
 
   .pilares .section-title {
