@@ -760,14 +760,16 @@ chicos y con espacio respecto al disco activo, sin superponerse. */
 }
 
 /* Flechas debajo del carrusel, mismo estilo que los íconos del header. */
-.vinilo-carousel .carousel-nav {
+.vinilo-carousel .carousel-nav,
+.disco-carousel .carousel-nav {
   display: flex;
   justify-content: center;
   gap: 20px;
   margin-top: 20px;
 }
 
-.vinilo-carousel .carousel-button {
+.vinilo-carousel .carousel-button,
+.disco-carousel .carousel-button {
   width: 44px;
   height: 44px;
   border-radius: 12px;
@@ -784,11 +786,13 @@ chicos y con espacio respecto al disco activo, sin superponerse. */
   transition: opacity 300ms ease-in-out;
 }
 
-.vinilo-carousel .carousel-button:hover {
+.vinilo-carousel .carousel-button:hover,
+.disco-carousel .carousel-button:hover {
   opacity: 0.85;
 }
 
-.vinilo-carousel .carousel-button span {
+.vinilo-carousel .carousel-button span,
+.disco-carousel .carousel-button span {
   line-height: 1;
 }
 
@@ -881,34 +885,71 @@ del elemento, pero como está rotado 180° se ve abajo. */
 }
 
 /* ─── SODA STEREO (sección en la main) ──────────────────────── */
-/* Tres fotos circulares lado a lado, con una leve superposición lograda
-con margin negativo (sin position absolute). */
-.soda-circles {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Carrusel de portadas circulares de álbumes de Soda Stereo.
+Misma lógica que el carrusel de vinilos, pero imágenes cuadradas/circulares. */
+.disco-carousel {
   margin-bottom: 24px;
 }
 
-.soda-circles img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid rgba(255,255,255,0.18);
-  box-shadow: 0 14px 30px rgba(0,0,0,0.35);
-}
-
-.soda-circles img + img {
-  margin-left: -16px;
-}
-
-/* La foto del medio queda al frente y un poco más grande. */
-.soda-circles img:nth-child(2) {
-  width: 120px;
-  height: 120px;
+.disco-carousel-items {
   position: relative;
+  width: 100%;
+  max-width: 340px;
+  height: 180px;
+  margin: 0 auto;
+}
+
+.disco-carousel .carousel-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 72px;
+  height: 72px;
+  transform: translate(-50%, -50%);
+  transition: all 300ms ease-in-out;
+  z-index: 1;
+  opacity: 0;
+}
+
+.disco-carousel .carousel-item a {
+  display: block;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+}
+
+.disco-carousel .carousel-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.disco-carousel .carousel-item.active {
+  width: 180px;
+  height: 180px;
+  opacity: 1;
+  z-index: 99;
+}
+
+.disco-carousel .carousel-item.prev {
+  width: 72px;
+  height: 72px;
+  left: 0;
+  transform: translate(0, -50%);
   z-index: 2;
+  opacity: 0.75;
+}
+
+.disco-carousel .carousel-item.next {
+  width: 72px;
+  height: 72px;
+  left: auto;
+  right: 0;
+  transform: translate(0, -50%);
+  z-index: 2;
+  opacity: 0.75;
 }
 
 /* ─── LEGADO ────────────────────────────────────────────────── */
@@ -917,13 +958,13 @@ con margin negativo (sin position absolute). */
   margin-bottom: 8px;
 }
 
-/* Cards bordó/rojo oscuro semitransparente, según el diseño. */
+/* Cards rojo ladrillo con borde rosado claro, según el diseño de More. */
 .legado-card {
-  background: linear-gradient(180deg, rgba(139, 0, 0, 0.55), rgba(61, 26, 10, 0.65));
-  border: 1px solid rgba(255,255,255,0.12);
+  background: linear-gradient(180deg, rgba(154, 35, 25, 0.9), rgba(110, 22, 16, 0.9));
+  border: 1px solid rgba(255, 140, 120, 0.65);
   border-radius: 18px;
   padding: 20px 18px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   box-shadow: 0 14px 30px rgba(0,0,0,0.25);
 }
 
@@ -937,7 +978,7 @@ con margin negativo (sin position absolute). */
 .legado-card p {
   font-size: 13px;
   line-height: 1.6;
-  color: var(--text-muted);
+  color: var(--white);
 }
 
 /* ─── TIENDA OFICIAL ────────────────────────────────────────── */
@@ -946,52 +987,40 @@ con margin negativo (sin position absolute). */
   margin-bottom: 8px;
 }
 
-/* Card de producto: imagen arriba y nombre abajo, centrados con flex column. */
+/* Card de producto: la imagen incluye el pie de foto del diseño. */
 .product-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
   background: linear-gradient(180deg, rgba(86, 109, 200, 0.349), rgba(64, 89, 170, 0.356));
   border: 2px solid rgba(255,255,255,0.18);
   border-radius: 18px;
-  padding: 24px 18px;
+  padding: 10px 12px;
   margin-bottom: 16px;
   box-shadow: 0 14px 30px rgba(0,0,0,0.22);
 }
 
+/* La imagen no ocupa toda la card: se limita el ancho para que quede
+proporcionada como en el diseño (producto + pie de foto). */
 .product-card img {
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: auto;
   object-fit: contain;
 }
 
-.product-card .product-name {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--white);
-}
-
 /* ─── FOOTER ────────────────────────────────────────────────── */
-/* Layout del footer con flexbox (sin grid):
-El <footer> ocupa todo el ancho y lleva el fondo negro.
-Dentro, .footer-inner limita y centra el contenido (igual que las section).
-Queremos: "GRACIAS TOTALES" a la izquierda, las redes a la derecha, y el
-texto legal abajo ocupando todo el ancho.
-- flex-wrap: wrap permite que los elementos pasen a una segunda fila.
-- .footer-social usa margin-left: auto para empujarse a la derecha.
-- .footer-legal usa flex-basis: 100% para ocupar toda la fila, por lo que
-  "se baja" solo a la línea de abajo. */
+/* Footer centrado: título, redes y legal apilados en columna. */
 footer {
-  background: rgba(0, 0, 0, 0.85);
+  background: #000;
 }
 
 .footer-inner {
-  padding: 36px 16px 30px;
+  padding: 40px 16px 32px;
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  column-gap: 16px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   row-gap: 20px;
 }
 
@@ -1005,15 +1034,14 @@ footer {
   letter-spacing: 2px;
 }
 
-/* margin-left: auto "empuja" las redes hacia la derecha del footer. */
 .footer-social {
-  margin-left: auto;
+  margin-left: 0;
 }
 
 .footer-icons {
   display: flex;
-  gap: 10px;
-  padding-top: 4px;
+  justify-content: center;
+  gap: 16px;
   list-style: none;
 }
 
@@ -1039,12 +1067,11 @@ footer {
   line-height: 1;
 }
 
-/* flex-basis: 100% hace que ocupe toda la fila y caiga a la línea de abajo. */
 .footer-legal {
-  flex-basis: 100%;
   font-size: 11px;
   line-height: 1.7;
-  color: var(--orange);
+  color: var(--text-muted);
+  max-width: 320px;
 }
 
 /* ─── MEDIA QUERIES ─────────────────────────────────────────── */
@@ -1151,14 +1178,20 @@ medida que hay más espacio. */
     width: 95px;
   }
 
-  .soda-circles img {
-    width: 120px;
-    height: 120px;
+  .disco-carousel-items {
+    max-width: 460px;
+    height: 220px;
   }
 
-  .soda-circles img:nth-child(2) {
-    width: 145px;
-    height: 145px;
+  .disco-carousel .carousel-item.active {
+    width: 220px;
+    height: 220px;
+  }
+
+  .disco-carousel .carousel-item.prev,
+  .disco-carousel .carousel-item.next {
+    width: 95px;
+    height: 95px;
   }
 }
 
@@ -1199,11 +1232,12 @@ medida que hay más espacio. */
   .footer-inner {
     max-width: 900px;
     margin: 0 auto;
-    padding: 48px 80px 32px;
+    padding: 48px 32px 36px;
   }
 
   .footer-legal {
     font-size: 12px;
+    max-width: 480px;
   }
 
   /* En desktop fijamos una altura al hero y usamos object-fit: cover para que
@@ -1300,14 +1334,20 @@ medida que hay más espacio. */
     width: 110px;
   }
 
-  .soda-circles img {
-    width: 140px;
-    height: 140px;
+  .disco-carousel-items {
+    max-width: 560px;
+    height: 260px;
   }
 
-  .soda-circles img:nth-child(2) {
-    width: 170px;
-    height: 170px;
+  .disco-carousel .carousel-item.active {
+    width: 260px;
+    height: 260px;
+  }
+
+  .disco-carousel .carousel-item.prev,
+  .disco-carousel .carousel-item.next {
+    width: 110px;
+    height: 110px;
   }
 
   /* Las dos cards de legado y de productos pasan a estar en fila. */
@@ -1321,5 +1361,10 @@ medida que hay más espacio. */
   .product-card {
     flex: 1;
     margin-bottom: 0;
+    padding: 12px 14px;
+  }
+
+  .product-card img {
+    width: 160px;
   }
 }
