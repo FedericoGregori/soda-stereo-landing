@@ -193,6 +193,11 @@ font-synthesis: none se lo impide y la deja como fue diseñada. */
   text-shadow: 0 2px 12px rgba(var(--orange-rgb), 0.35);
 }
 
+.header-title a {
+  color: var(--orange);
+  text-decoration: none;
+}
+
 /* ─── HERO ──────────────────────────────────────────────────── */
 .hero {
   position: relative;
