@@ -1,7 +1,3 @@
-/* ─── FUENTES LOCALES ───────────────────────────────────────── */
-/* Fuentes en fonts/. @font-face le dice al navegador
-dónde encontrar cada archivo. font-display: swap muestra texto con fuente
-de respaldo mientras carga, y luego cambia a la fuente real. */
 @font-face {
   font-family: 'Erica One';
   src: url('fonts/erica-one/EricaOne-Regular.ttf') format('truetype');
@@ -42,30 +38,15 @@ de respaldo mientras carga, y luego cambia a la fuente real. */
   font-display: swap;
 }
 
-/* ─── RESET & BASE ─────────────────────────────────────────── */
-/* Qué es *::before y *::after?
-*::before y *::after son selectores que se usan para crear pseudo-elementos.
-Son útiles para crear bordes, sombras, etc.
-En este caso el objetivo es resetear los estilos por defecto del navegador. 
-Esto ayuda a que el diseño sea consistente en todos los navegadores.
-Por ejemplo, el navegador por defecto tiene un margin y padding de 8px.
-*/
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Qué es :root?
-:root es un selector que se usa para crear variables CSS.
-Es útil para crear variables CSS que se pueden reutilizar en todo el documento.
-En este caso se crean las variables CSS para el diseño de la página.
-Por ejemplo, el color principal de texto es #F6F6F6.
-Pero se puede reutilizar en todo el documento con la variable --white.
-Es buena práctica para la mantenibilidad del código.
-*/
 :root {
   --orange:       #F94B26;
+  
   --orange-rgb:   249, 75, 38;
   --orange-light: #ff6347;
   --blue:         #3357C6;
@@ -87,10 +68,10 @@ body {
   font-family: var(--font-body);
   color: var(--white);
   background-color: #000;
+  
   min-height: 100vh;
 }
 
-/* Background de la página. Inicia despues del hero y termina en el footer. */
 .page-background {
   background-color: var(--navy-dark);
   background-image: url('img/background.png');
@@ -100,10 +81,7 @@ body {
 }
 
 img {
-  /* Por qué usamos display: block y max-width: 100%?
-  Display: block es un tipo de display que se usa para definir un elemento como bloque.
-  Max-width: 100% es un atributo que se usa para hacer que el elemento ocupe el 100% del ancho de su contenedor.
-  */
+  
   display: block;
   max-width: 100%;
 }
@@ -113,16 +91,6 @@ a {
   color: var(--white);
 }
 
-/* ─── HEADER / NAV ──────────────────────────────────────────── */
-/* Por qué position: sticky?
-El header queda "pegado" arriba y sigue visible mientras se hace scroll.
-- top: 0 indica desde dónde se pega.
-- z-index: 100 lo mantiene por encima del resto del contenido.
-- backdrop-filter: blur desenfoca lo que pasa por detrás, así el título
-  siempre se lee bien.
-- display: flex + justify-content: space-between reparten los 3 elementos
-  (menú, título, carrito): uno a la izquierda, uno al centro y uno a la derecha.
-*/
 header {
   position: sticky;
   top: 0;
@@ -135,8 +103,6 @@ header {
   padding: 12px 16px;
 }
 
-/* Caja cuadrada del ícono. flex + center centran el ícono adentro.
-flex-shrink: 0 evita que la caja se achique cuando el título del medio crece. */
 .nav-icon {
   width: 44px;
   height: 44px;
@@ -148,7 +114,6 @@ flex-shrink: 0 evita que la caja se achique cuando el título del medio crece. *
   margin: 0;
   cursor: pointer;
   flex-shrink: 0;
-  appearance: none;
   background: rgba(0, 0, 0, 0.35);
   border: 1px solid rgba(255,255,255,0.15);
   box-shadow: 0 12px 22px rgba(0,0,0,0.25);
@@ -177,10 +142,6 @@ flex-shrink: 0 evita que la caja se achique cuando el título del medio crece. *
   object-fit: contain;
 }
 
-/* Por qué font-synthesis: none?
-La fuente Erica One solo existe en un grosor (400). Si le pedimos negrita,
-el navegador la "engrosa" artificialmente (negrita falsa) y queda fea/borrosa.
-font-synthesis: none se lo impide y la deja como fue diseñada. */
 .header-title {
   font-family: var(--font-title);
   font-weight: 400;
@@ -198,7 +159,6 @@ font-synthesis: none se lo impide y la deja como fue diseñada. */
   text-decoration: none;
 }
 
-/* ─── HERO ──────────────────────────────────────────────────── */
 .hero {
   position: relative;
   width: 100%;
@@ -210,7 +170,6 @@ font-synthesis: none se lo impide y la deja como fue diseñada. */
   height: auto;
 }
 
-/* ─── SECTION WRAPPER ───────────────────────────────────────── */
 section {
   padding: 32px 16px;
 }
@@ -228,7 +187,6 @@ section {
   color: var(--orange);
 }
 
-/* ─── PILARES ───────────────────────────────────────────────── */
 .pilares {
   background: transparent;
 }
@@ -242,9 +200,6 @@ section {
   list-style: none;
 }
 
-/* Tarjeta de integrante. En celular es una fila (flex): foto a la izquierda
-y texto a la derecha, separados por gap. El fondo es un degradado azul
-semitransparente (rgba) para que combine con el fondo de la página. */
 .member-card {
   display: flex;
   align-items: center;
@@ -261,12 +216,6 @@ semitransparente (rgba) para que combine con el fondo de la página. */
   text-align: left;
 }
 
-/* "Aura" azul detrás de la foto del integrante.
-Las fotos son PNG con el fondo recortado (transparente), así que este
-radial-gradient se ve por detrás. Va de azul brillante en el centro a
-totalmente transparente (alpha 0) en los bordes, para que se funda con la
-tarjeta y NO se note el rectángulo de la imagen.
-object-fit: cover hace que la foto llene el cuadrado sin deformarse. */
 .member-card img {
   width: 84px;
   height: 84px;
@@ -295,8 +244,6 @@ object-fit: cover hace que la foto llene el cuadrado sin deformarse. */
   color: var(--text-muted);
   line-height: 1.4;
 }
-
-/* ─── BANDA ─────────────────────────────────────────────────── */
 
 .banda-subtitle {
   font-size: 15px;
@@ -385,8 +332,6 @@ object-fit: cover hace que la foto llene el cuadrado sin deformarse. */
   padding-left: 6px;
 }
 
-/* La viñeta (•) se crea con un pseudo-elemento en vez de usar una lista,
-así podemos darle un color (naranja) distinto al del texto. */
 .bullet-text::before {
   content: '• ';
   color: var(--orange);
@@ -398,7 +343,6 @@ así podemos darle un color (naranja) distinto al del texto. */
   font-style: italic;
 }
 
-/* Band photo card: imagen compuesta (fotos + logo). */
 .band-photo-card {
   width: 100%;
   margin: 0;
@@ -418,7 +362,6 @@ así podemos darle un color (naranja) distinto al del texto. */
   display: block;
 }
 
-/* ─── TIMELINE ──────────────────────────────────────────────── */
 .timeline-title {
   font-family: var(--font-section);
   font-size: 25px;
@@ -433,14 +376,6 @@ así podemos darle un color (naranja) distinto al del texto. */
   list-style: none;
 }
 
-/* Línea punteada vertical que une cada disco con el siguiente.
-- :not(:last-child) hace que NO se dibuje en el último item, así no queda
-  una línea sobrante colgando debajo del último disco.
-- repeating-linear-gradient crea el punteado: 6px naranja, 6px transparente,
-  y se repite.
-- top: 16px arranca en el centro del disco (que mide 32px).
-- bottom: -28px estira la línea hasta el disco de abajo (28px es el
-  margin-bottom entre items). */
 .timeline-item:not(:last-child)::before {
   content: '';
   position: absolute;
@@ -496,8 +431,6 @@ así podemos darle un color (naranja) distinto al del texto. */
   box-shadow: 0 25px 45px rgba(0,0,0,0.18);
 }
 
-/* "Badge" del año. position: absolute + top negativo lo ubican apenas por
-fuera del borde superior de la tarjeta, montado sobre el borde. */
 .timeline-year {
   position: absolute;
   top: -13px;
@@ -526,13 +459,6 @@ fuera del borde superior de la tarjeta, montado sobre el borde. */
   color: var(--text-muted);
 }
 
-/* ─── BUTTONS ───────────────────────────────────────────────── */
-/* Botón tipo "pill" (bordes muy redondeados).
-- display: inline-block hace que el ancho se ajuste al texto (no ocupa toda
-  la fila) y permite alinearlo a la izquierda.
-- El gradiente usa rgba con transparencia (0.75) para que se vea un poco el
-  fondo de la página por detrás.
-- transition suaviza el cambio al pasar el mouse (ver .btn:hover). */
 .btn {
   display: inline-block;
   background: linear-gradient(135deg, rgba(var(--orange-rgb), 0.75), rgba(139, 0, 0, 0.75));
@@ -568,9 +494,6 @@ fuera del borde superior de la tarjeta, montado sobre el borde. */
   margin-bottom: 24px;
 }
 
-/* ─── ÁLBUMES ───────────────────────────────────────────────── */
-/* Los 3 discos se superponen. El contenedor es relative + altura fija para
-poder posicionar las imágenes en absolute por encima. */
 .albums-circles {
   display: flex;
   justify-content: center;
@@ -583,15 +506,12 @@ poder posicionar las imágenes en absolute por encima. */
 .albums-circles img {
   width: 90px;
   height: 90px;
-  border-radius: 50%; /* círculo perfecto */
+  border-radius: 50%; 
   object-fit: cover;
   position: absolute;
   border: none;
 }
 
-/* Cada disco: left: 50% lo lleva al centro y translateX lo corre a su lugar
-(negativo = izquierda, positivo = derecha). El del medio (nth-child 2) es más
-grande (120px) y tiene el z-index más alto para quedar al frente. */
 .albums-circles img:nth-child(1) {
   left: 50%;
   transform: translateX(-120px);
@@ -623,8 +543,6 @@ grande (120px) y tiene el z-index más alto para quedar al frente. */
   margin-bottom: 12px;
 }
 
-/* display: block hace que el número quede en su propia línea, arriba del
-texto (un <span> normalmente es inline y quedaría al lado). */
 .stat-card .stat-number {
   display: block;
   font-size: 20px;
@@ -643,11 +561,6 @@ texto (un <span> normalmente es inline y quedaría al lado). */
   font-style: italic;
 }
 
-/* ─── MAIN PAGE (index.html — Gustavo Cerati) ───────────────── */
-
-/* Barra de estadísticas del hero: card azul tipo pill con 3 columnas.
-display: flex reparte los 3 items; text-align: left alinea número y texto
-dentro de cada columna, como en el diseño. */
 .stats-bar {
   display: flex;
   gap: 12px;
@@ -680,8 +593,6 @@ dentro de cada columna, como en el diseño. */
   line-height: 1.4;
 }
 
-/* Foto principal de Cerati en la bio. overflow: hidden recorta la imagen
-para que respete los bordes redondeados del contenedor. */
 .bio-image-card {
   border-radius: 20px;
   overflow: hidden;
@@ -695,10 +606,6 @@ para que respete los bordes redondeados del contenedor. */
   height: auto;
 }
 
-/* ─── CARRUSEL DE VINILOS (Obra solista) ────────────────────── */
-/* Adaptado de https://codepen.io/YousifW/pen/LKBxZX
-Cada vinilo es una imagen rectangular (funda + disco). Solo 3 se ven:
-active (centro, más grande), prev (izq) y next (der). */
 .vinilo-carousel {
   margin-bottom: 24px;
 }
@@ -739,9 +646,6 @@ active (centro, más grande), prev (izq) y next (der). */
   z-index: 99;
 }
 
-/* Los discos laterales se anclan a los bordes del contenedor (left: 0 /
-right: 0) en vez de desplazarse desde el centro. Así se ven completos,
-chicos y con espacio respecto al disco activo, sin superponerse. */
 .vinilo-carousel .carousel-item.prev {
   width: 72px;
   left: 0;
@@ -759,7 +663,6 @@ chicos y con espacio respecto al disco activo, sin superponerse. */
   opacity: 0.75;
 }
 
-/* Flechas debajo del carrusel, mismo estilo que los íconos del header. */
 .vinilo-carousel .carousel-nav,
 .disco-carousel .carousel-nav {
   display: flex;
@@ -796,15 +699,10 @@ chicos y con espacio respecto al disco activo, sin superponerse. */
   line-height: 1;
 }
 
-/* ─── UNA VIDA EN MÚSICA ────────────────────────────────────── */
-/* La sección no tiene padding izquierdo: la card "sale" hacia el borde
-de la pantalla, como en el diseño de More. */
 section.vida {
   padding-left: 0;
 }
 
-/* Card con borde solo arriba, derecha y abajo. Sin borde ni radio a la
-izquierda, para que parezca que continúa fuera de la pantalla. */
 .vida-card {
   background: linear-gradient(180deg, rgba(86,108,200,0.4), rgba(64,88,170,0.4));
   border: 1px solid rgba(120, 150, 255, 0.55);
@@ -823,9 +721,6 @@ izquierda, para que parezca que continúa fuera de la pantalla. */
   list-style: none;
 }
 
-/* Cada hito es una fila flex: año rotado a la izquierda, texto a la derecha.
-align-items: flex-start alinea el último dígito del año (arriba) con la
-primera línea del texto, en vez de centrar verticalmente. */
 .vida-item {
   display: flex;
   align-items: flex-start;
@@ -837,15 +732,10 @@ primera línea del texto, en vez de centrar verticalmente. */
   margin-bottom: 12px;
 }
 
-/* Separación clara entre el último hito y el botón (el punto del año
-sigue un poco más abajo que el texto, por eso hace falta más aire). */
 .vida-card .btn {
   margin-top: 32px;
 }
 
-/* El año va en vertical, leyéndose de abajo hacia arriba.
-- writing-mode: vertical-rl apila las letras en columna.
-- rotate(180deg) invierte la columna para que se lea de abajo hacia arriba. */
 .vida-year {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
@@ -858,8 +748,6 @@ sigue un poco más abajo que el texto, por eso hace falta más aire). */
   flex-shrink: 0;
 }
 
-/* Punto naranja al pie del año. Se posiciona "arriba" en las coordenadas
-del elemento, pero como está rotado 180° se ve abajo. */
 .vida-year::before {
   content: '';
   position: absolute;
@@ -884,9 +772,6 @@ del elemento, pero como está rotado 180° se ve abajo. */
   font-style: italic;
 }
 
-/* ─── SODA STEREO (sección en la main) ──────────────────────── */
-/* Carrusel de portadas circulares de álbumes de Soda Stereo.
-Misma lógica que el carrusel de vinilos, pero imágenes cuadradas/circulares. */
 .disco-carousel {
   margin-bottom: 24px;
 }
@@ -952,13 +837,11 @@ Misma lógica que el carrusel de vinilos, pero imágenes cuadradas/circulares. *
   opacity: 0.75;
 }
 
-/* ─── LEGADO ────────────────────────────────────────────────── */
 .legado-cards {
   list-style: none;
   margin-bottom: 8px;
 }
 
-/* Cards rojo ladrillo con borde rosado claro, según el diseño de More. */
 .legado-card {
   background: linear-gradient(180deg, rgba(154, 35, 25, 0.9), rgba(110, 22, 16, 0.9));
   border: 1px solid rgba(255, 140, 120, 0.65);
@@ -981,13 +864,11 @@ Misma lógica que el carrusel de vinilos, pero imágenes cuadradas/circulares. *
   color: var(--white);
 }
 
-/* ─── TIENDA OFICIAL ────────────────────────────────────────── */
 .product-cards {
   list-style: none;
   margin-bottom: 8px;
 }
 
-/* Card de producto: la imagen incluye el pie de foto del diseño. */
 .product-card {
   display: flex;
   flex-direction: column;
@@ -1001,16 +882,12 @@ Misma lógica que el carrusel de vinilos, pero imágenes cuadradas/circulares. *
   box-shadow: 0 14px 30px rgba(0,0,0,0.22);
 }
 
-/* La imagen no ocupa toda la card: se limita el ancho para que quede
-proporcionada como en el diseño (producto + pie de foto). */
 .product-card img {
   width: 120px;
   height: auto;
   object-fit: contain;
 }
 
-/* ─── FOOTER ────────────────────────────────────────────────── */
-/* Footer centrado: título, redes y legal apilados en columna. */
 footer {
   background: #000;
 }
@@ -1074,17 +951,6 @@ footer {
   max-width: 320px;
 }
 
-/* ─── MEDIA QUERIES ─────────────────────────────────────────── */
-/* DISEÑO MOBILE-FIRST:
-Todos los estilos de ARRIBA están pensados para celular (pantalla chica).
-Estos bloques @media (min-width: ...) AGREGAN o AJUSTAN estilos a partir de
-cierto ancho de pantalla, sin reescribir todo:
-- min-width: 600px  → tablets en adelante
-- min-width: 1024px → escritorio en adelante
-Es decir, primero diseñamos para lo más chico y vamos sumando mejoras a
-medida que hay más espacio. */
-
-/* ─── TABLET (≥600px) ──────────────────────────────────────── */
 @media (min-width: 600px) {
   header {
     padding: 14px 32px;
@@ -1150,7 +1016,7 @@ medida que hay más espacio. */
     font-size: 44px;
   }
 
-  /* Main page — tablet */
+  
   .stats-bar {
     padding: 22px 36px;
     border-radius: 40px;
@@ -1195,7 +1061,6 @@ medida que hay más espacio. */
   }
 }
 
-/* ─── MEDIA QUERIES — DESKTOP (≥1024px) ────────────────────── */
 @media (min-width: 1024px) {
   header {
     padding: 16px 80px;
@@ -1205,9 +1070,7 @@ medida que hay más espacio. */
     font-size: 42px;
   }
 
-  /* En pantallas grandes limitamos el ancho de las secciones a 900px y las
-  centramos (margin: 0 auto) para que el texto no quede demasiado ancho y
-  sea más cómodo de leer. */
+  
   section {
     padding: 60px 80px;
     max-width: 900px;
@@ -1227,8 +1090,7 @@ medida que hay más espacio. */
     margin-bottom: 60px;
   }
 
-  /* Centra el contenido del footer a un máximo de 900px, pero mantiene el
-  fondo negro ocupando todo el ancho (mismo criterio que las section). */
+  
   .footer-inner {
     max-width: 900px;
     margin: 0 auto;
@@ -1240,9 +1102,7 @@ medida que hay más espacio. */
     max-width: 480px;
   }
 
-  /* En desktop fijamos una altura al hero y usamos object-fit: cover para que
-  la imagen llene ese espacio sin deformarse (recorta lo que sobra). En celular
-  el hero crece según la altura natural de la imagen. */
+  
   .hero {
     height: 460px;
   }
@@ -1252,9 +1112,7 @@ medida que hay más espacio. */
     object-fit: cover;
   }
 
-  /* En desktop, las 3 tarjetas pasan a estar en una fila (flex).
-  flex: 1 en cada una hace que ocupen el mismo ancho (un tercio cada una).
-  flex-direction: column acomoda la foto arriba y el texto abajo. */
+  
   .member-cards-grid {
     display: flex;
     gap: 16px;
@@ -1304,7 +1162,7 @@ medida que hay más espacio. */
     transform: translateX(40px);
   }
 
-  /* Mismo criterio que las tarjetas de miembros: 3 columnas iguales con flex. */
+  
   .stats-grid {
     display: flex;
     gap: 16px;
@@ -1319,7 +1177,7 @@ medida que hay más espacio. */
     font-size: 52px;
   }
 
-  /* Main page — desktop */
+  
   .vinilo-carousel-items {
     max-width: 560px;
     height: 200px;
@@ -1350,7 +1208,7 @@ medida que hay más espacio. */
     height: 110px;
   }
 
-  /* Las dos cards de legado y de productos pasan a estar en fila. */
+  
   .legado-cards,
   .product-cards {
     display: flex;

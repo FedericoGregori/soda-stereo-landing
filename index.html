@@ -2,16 +2,15 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gustavo Cerati | El arquitecto del rock latinoamericano</title>
-  <meta name="description" content="Homenaje a Gustavo Cerati: biografía, obra solista, su vida en música, Soda Stereo, homenajes y tienda oficial del arquitecto del rock latinoamericano." />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <meta name="description" content="Homenaje a Gustavo Cerati: biografía, obra solista, su vida en música, Soda Stereo, homenajes y tienda oficial del arquitecto del rock latinoamericano." />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- ── HEADER ─────────────────────────────────────────────────── -->
-  <header>
+      <header>
     <a href="#" class="nav-icon nav-icon--menu">
       <span class="bi bi-list"></span>
     </a>
@@ -27,8 +26,7 @@
 
     <div class="page-background">
 
-      <!-- ── BIO / HERO ─────────────────────────────────────────────── -->
-      <section class="bio">
+            <section class="bio">
         <h2 class="section-title">El arquitecto del rock latinoamericano</h2>
 
         <p class="body-text">
@@ -37,8 +35,7 @@
           décadas con una obra que fusionó el new wave, el pop y la experimentación electrónica.
         </p>
 
-        <!-- Barra de estadísticas: una sola card con 3 columnas en flex -->
-        <div class="stats-bar">
+                <div class="stats-bar">
           <div class="stats-bar-item">
             <span class="stat-number">11</span>
             <p>Álbumes solistas</p>
@@ -60,15 +57,14 @@
         <a href="#" class="btn">Leer biografía completa</a>
       </section>
 
-      <!-- ── OBRA SOLISTA ───────────────────────────────────────────── -->
-      <section class="obra">
+            <section class="obra">
         <h2 class="section-title">Obra solista</h2>
         <p class="banda-subtitle">
           Desde <strong>Amor Amarillo</strong> hasta <strong>Fuerza natural</strong>,
           una carrera que redefinió el rock en español.
         </p>
 
-        <div class="vinilo-carousel">
+                <div class="vinilo-carousel">
           <div class="vinilo-carousel-items">
 
             <div class="carousel-item prev">
@@ -107,7 +103,7 @@
 
           </div>
 
-          <div class="carousel-nav">
+                    <div class="carousel-nav">
             <a href="#" class="carousel-button carousel-button--prev">
               <span class="bi bi-chevron-left"></span>
             </a>
@@ -120,8 +116,7 @@
         <a href="#" class="btn">Ver discografía completa</a>
       </section>
 
-      <!-- ── UNA VIDA EN MÚSICA ─────────────────────────────────────── -->
-      <section class="vida">
+                  <section class="vida">
         <div class="vida-card">
           <h2 class="section-title">Una vida en música</h2>
 
@@ -148,8 +143,7 @@
         </div>
       </section>
 
-      <!-- ── SODA STEREO ────────────────────────────────────────────── -->
-      <section class="soda">
+            <section class="soda">
         <h2 class="section-title">La banda que cambió el rock en español para siempre.</h2>
 
         <p class="body-text">
@@ -158,7 +152,7 @@
           tiempos, llenando estadios en toda Latinoamérica.
         </p>
 
-        <div class="disco-carousel">
+                <div class="disco-carousel">
           <div class="disco-carousel-items">
 
             <div class="carousel-item">
@@ -198,8 +192,7 @@
         <a href="soda-stereo.html" class="btn">Explorar Soda Stereo</a>
       </section>
 
-      <!-- ── LEGADO ─────────────────────────────────────────────────── -->
-      <section class="legado">
+            <section class="legado">
         <h2 class="section-title">Su legado, en voces del mundo</h2>
         <p class="banda-subtitle">
           Artistas, fans y el mundo de la música rindieron homenajes al más grande.
@@ -219,8 +212,7 @@
         <a href="#" class="btn">Ver todos los homenajes</a>
       </section>
 
-      <!-- ── TIENDA OFICIAL ─────────────────────────────────────────── -->
-      <section class="tienda">
+                  <section class="tienda">
         <h2 class="section-title">Tienda oficial</h2>
 
         <ul class="product-cards">
@@ -239,8 +231,7 @@
 
   </main>
 
-  <!-- ── FOOTER ─────────────────────────────────────────────────── -->
-  <footer>
+      <footer>
     <div class="footer-inner">
       <p class="footer-title">GRACIAS<br>TOTALES</p>
 
@@ -276,61 +267,7 @@
     </div>
   </footer>
 
-  <script>
-    /* Carruseles de discos — Obra solista (vinilos) y Soda Stereo (portadas).
-    Basado en https://codepen.io/YousifW/pen/LKBxZX
-    Al hacer click en las flechas, se cambian las clases active/prev/next
-    y el CSS mueve cada disco con transform y opacity. */
-    const carousels = document.querySelectorAll('.vinilo-carousel, .disco-carousel');
-
-    for (let c = 0; c < carousels.length; c++) {
-      const carousel = carousels[c];
-      const slides = carousel.querySelectorAll('.carousel-item');
-      const buttons = carousel.querySelectorAll('.carousel-button');
-      const total = slides.length;
-      let current = 0;
-
-      for (let i = 0; i < total; i++) {
-        if (slides[i].classList.contains('active')) {
-          current = i;
-        }
-      }
-
-      function gotoNum(number) {
-        current = number;
-        let prev = current - 1;
-        let next = current + 1;
-
-        if (next >= total) {
-          next = 0;
-        }
-
-        if (prev < 0) {
-          prev = total - 1;
-        }
-
-        for (let i = 0; i < total; i++) {
-          slides[i].classList.remove('active');
-          slides[i].classList.remove('prev');
-          slides[i].classList.remove('next');
-        }
-
-        slides[current].classList.add('active');
-        slides[prev].classList.add('prev');
-        slides[next].classList.add('next');
-      }
-
-      buttons[0].addEventListener('click', function (event) {
-        event.preventDefault();
-        gotoNum(current > 0 ? current - 1 : total - 1);
-      });
-
-      buttons[1].addEventListener('click', function (event) {
-        event.preventDefault();
-        gotoNum(current < total - 1 ? current + 1 : 0);
-      });
-    }
-  </script>
+    <script src="carousel.js"></script>
 
 </body>
 </html>
