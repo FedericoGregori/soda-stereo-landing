@@ -3,210 +3,207 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Soda Stereo | La banda que cambió todo</title>
-  <meta name="description" content="Homenaje a Soda Stereo y Gustavo Cerati: los pilares de la banda, su historia, el viaje y los álbumes de estudio del grupo más influyente del rock latinoamericano." />
+  <title>Gustavo Cerati | El arquitecto del rock latinoamericano</title>
+  <meta name="description" content="Homenaje a Gustavo Cerati: biografía, obra solista, su vida en música, Soda Stereo, homenajes y tienda oficial del arquitecto del rock latinoamericano." />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- Por qué existe este link de Saltar al contenido? 
-  Este link es para saltar al contenido principal de la página.
-  Es útil para los usuarios que usan lectores de pantalla o que navegan con el teclado.
-  
-  Es una buena práctica para la accesibilidad.
-  Para verlo recargue la página y presione la tecla Tab.
-  El link se verá como un botón de la barra de navegación.
-  -->
-  <a class="skip-link" href="#contenido">Saltar al contenido</a>
-
   <!-- ── HEADER ─────────────────────────────────────────────────── -->
   <header>
-    <!-- Qué es aria-label?
-     Aria-label es un atributo que se usa para describir el propósito de un elemento.
-     Es útil para los usuarios que usan lectores de pantalla o que navegan con el teclado.
-     Es una buena práctica para la accesibilidad.
-     -->
-    <a href="#" class="nav-icon nav-icon--menu" aria-label="Abrir menú de navegación">
-      <span class="bi bi-list" aria-hidden="true"></span>
+    <a href="#" class="nav-icon nav-icon--menu">
+      <span class="bi bi-list"></span>
     </a>
 
     <h1 class="header-title">GUSTAVO<br>CERATI</h1>
 
-    <a href="#" class="nav-icon nav-icon--cart" aria-label="Carrito de compras">
-      <img src="img/shop-cart.png" alt="" width="22" height="22" />
+    <a href="#" class="nav-icon nav-icon--cart">
+      <img src="img/shop-cart.png" alt="Carrito de compras" width="22" height="22" />
     </a>
   </header>
 
-  <main id="contenido">
-
-    <!-- ── HERO ───────────────────────────────────────────────────── -->
-    <div class="hero">
-      <img class="hero-bg" src="img/band-silhouette.png" alt="Siluetas de los integrantes de Soda Stereo" />
-      <img class="hero-logo" src="img/soda-logo-min.png" alt="Logo de Soda Stereo" />
-    </div>
+  <main>
 
     <div class="page-background">
 
-      <!-- ── PILARES ────────────────────────────────────────────────── -->
-      <section class="pilares" aria-labelledby="pilares-title">
-        <h2 class="section-title" id="pilares-title">Los <em>pilares</em> de Soda Stereo</h2>
-        <!-- Qué es role="list"?
-        Role es un atributo que se usa para describir el propósito de un elemento.
-        Es útil para los usuarios que usan lectores de pantalla o que navegan con el teclado.
-        Es una buena práctica para la accesibilidad.
-        -->
-        <ul class="member-cards-grid" role="list">
+      <!-- ── BIO / HERO ─────────────────────────────────────────────── -->
+      <section class="bio">
+        <h2 class="section-title">El arquitecto del rock latinoamericano</h2>
 
-          <li class="member-card">
-            <!-- Qué es loading="lazy" y decoding="async"?
-            Lazy loading es una técnica para cargar las imágenes cuando se necesitan.
-            Async decoding es una técnica para decodificar de forma asincrona quiere decir que la imagen se decodifica mientras se carga
-            sin bloquear la carga de la página.
-            -->
-            <img src="img/member-cerati.png" alt="Retrato de Gustavo Cerati" loading="lazy" decoding="async" />
-            <div class="member-info">
-              <h3>Gustavo Cerati</h3>
-              <p>Voz principal, composición.<br>11 ago 1959 – 04 sep 2014.</p>
-            </div>
-          </li>
+        <p class="body-text">
+          <strong>Gustavo Adrián Cerati</strong> fue compositor, cantante, guitarrista y productor musical argentino.
+          Líder y alma de <strong>Soda Stereo</strong>, definió el sonido del rock en español durante
+          décadas con una obra que fusionó el new wave, el pop y la experimentación electrónica.
+        </p>
 
-          <li class="member-card">
-            <img src="img/member-alberti.png" alt="Retrato de Charly Alberti" loading="lazy" decoding="async" />
-            <div class="member-info">
-              <h3>Charly Alberti</h3>
-              <p>Batería, percusión, co-fund.</p>
-            </div>
-          </li>
+        <!-- Barra de estadísticas: una sola card con 3 columnas en flex -->
+        <div class="stats-bar">
+          <div class="stats-bar-item">
+            <span class="stat-number">11</span>
+            <p>Álbumes solistas</p>
+          </div>
+          <div class="stats-bar-item">
+            <span class="stat-number">30+</span>
+            <p>Años de carrera</p>
+          </div>
+          <div class="stats-bar-item">
+            <span class="stat-number">∞</span>
+            <p>Legado musical</p>
+          </div>
+        </div>
 
-          <li class="member-card">
-            <img src="img/member-zeta.png" alt="Retrato de Zeta Bosio" loading="lazy" decoding="async" />
-            <div class="member-info">
-              <h3>Zeta Bosio</h3>
-              <p>Bajo, coros, co-fund.</p>
-            </div>
-          </li>
+        <div class="bio-image-card">
+          <img src="img/gustavo-cerati-main.jpeg" alt="Gustavo Cerati mirando a cámara con la mano extendida" />
+        </div>
 
-        </ul>
+        <a href="#" class="btn">Leer biografía completa</a>
       </section>
 
-      <!-- ── BANDA ──────────────────────────────────────────────────── -->
-      <section class="banda" aria-labelledby="banda-title">
-        <h2 class="section-title" id="banda-title">La banda que cambió todo</h2>
+      <!-- ── OBRA SOLISTA ───────────────────────────────────────────── -->
+      <section class="obra">
+        <h2 class="section-title">Obra solista</h2>
         <p class="banda-subtitle">
-          Tres músicos. Una ciudad en efervescencia.<br>
-          La historia de la banda <strong>más influyente del rock latinoamericano.</strong>
+          Desde <strong>Amor Amarillo</strong> hasta <strong>Fuerza natural</strong>,
+          una carrera que redefinió el rock en español.
         </p>
 
-        <aside class="year-block">
-          <span class="year-number">'82</span>
-          <p class="year-text">
-            Argentina emergía en una dictadura militar que <em>silenció la cultura</em> durante años.
-          </p>
-        </aside>
+        <div class="vinilo-carousel">
+          <div class="vinilo-carousel-items">
 
-        <p class="body-text">
-          Con la vuelta de la democracia en 1983, la sociedad necesitaba explotar. El rock nacional,
-          antes perseguido, se convertía en el <strong>lenguaje de una generación.</strong>
-        </p>
+            <div class="carousel-item prev">
+              <a href="#"><img src="img/vinilos/vinilo01.png" alt="Vinilo de Colores Santos" /></a>
+            </div>
+            <div class="carousel-item active">
+              <a href="#"><img src="img/vinilos/vinilo02.png" alt="Vinilo de Amor Amarillo" /></a>
+            </div>
+            <div class="carousel-item next">
+              <a href="#"><img src="img/vinilos/vinilo03.png" alt="Vinilo de Bocanada" /></a>
+            </div>
+            <div class="carousel-item">
+              <a href="#"><img src="img/vinilos/vinilo04.png" alt="Vinilo de Más Bien" /></a>
+            </div>
+            <div class="carousel-item">
+              <a href="#"><img src="img/vinilos/vinilo05.png" alt="Vinilo de Once Episodios Sinfónicos" /></a>
+            </div>
+            <div class="carousel-item">
+              <a href="#"><img src="img/vinilos/vinilo06.png" alt="Vinilo de Siempre Es Hoy" /></a>
+            </div>
+            <div class="carousel-item">
+              <a href="#"><img src="img/vinilos/vinilo07.png" alt="Vinilo de Siempre Es Hoy / Reversiones" /></a>
+            </div>
+            <div class="carousel-item">
+              <a href="#"><img src="img/vinilos/vinilo08.png" alt="Vinilo de Canciones Elegidas noventa y tres cero cuatro" /></a>
+            </div>
+            <div class="carousel-item">
+              <a href="#"><img src="img/vinilos/vinilo09.png" alt="Ahí Vamos" /></a>
+            </div>
+            <div class="carousel-item">
+              <a href="#"><img src="img/vinilos/vinilo10.png" alt="Ahí Vamos Tour" /></a>
+            </div>
+            <div class="carousel-item">
+              <a href="#"><img src="img/vinilos/vinilo11.png" alt="Fuerza Natural" /></a>
+            </div>
 
-        <div class="quote-card">
-          <p class="quote-text">
-            "Era una época de libertad total. Podíamos hacer cualquier cosa porque <strong>nadie sabía qué era lo correcto</strong>."
-          </p>
-          <p class="quote-author">— Gustavo Cerati</p>
-        </div>
+          </div>
 
-        <p class="body-text">
-          La postguerra de Malvinas dejó una herida profunda pero también encendió un <strong>orgullo cultural</strong>
-          sin precedentes. Buenos Aires se llenó de bares, clubs nocturnos y espacios de experimentación artística.
-        </p>
-
-        <p class="bullet-text">
-          La escena del rock nacional ya tenía referentes —Spinetta, Almendra, Charly García— pero Soda Stereo
-          traería algo diferente: <strong>imagen, producción y ambición internacional.</strong>
-        </p>
-
-        <div class="band-photo-card">
-          <img src="img/band-logo-card.png" alt="Soda Stereo: fotos de la banda con el logo" loading="lazy" decoding="async" />
-        </div>
-      </section>
-
-      <!-- ── EL VIAJE ───────────────────────────────────────────────── -->
-      <!-- Qué es aria-labelledby?
-      Aria-labelledby es un atributo que se usa para describir el propósito de un elemento.
-      Es útil para los usuarios que usan lectores de pantalla o que navegan con el teclado.
-      -->
-      <section class="viaje" aria-labelledby="viaje-title">
-        <h2 class="timeline-title" id="viaje-title">El viaje</h2>
-
-        <ol class="timeline">
-
-          <li class="timeline-item">
-            <img class="timeline-marker" src="img/disco.png" alt="" loading="lazy" decoding="async" />
-            <article class="timeline-card">
-              <span class="timeline-year">1982</span>
-              <h3>Formación de la banda</h3>
-              <p>Cerati, Bosio y Alberti se unen en Buenos Aires. Empiezan a tocar en bares y recitales pequeños de la escena under porteña. El nombre de Soda Stereo surge de la combinación de dos palabras de la cultura pop.</p>
-            </article>
-          </li>
-
-          <li class="timeline-item">
-            <img class="timeline-marker" src="img/disco.png" alt="" loading="lazy" decoding="async" />
-            <article class="timeline-card">
-              <span class="timeline-year">1984</span>
-              <h3>Debut discográfico</h3>
-              <p>Lanzan su primer álbum homónimo con CBS Records. Hits inmediatos: "Debo Ser" y "Trátame Suavemente". La banda empieza a llenar teatros en Argentina.</p>
-            </article>
-          </li>
-
-          <li class="timeline-item">
-            <img class="timeline-marker" src="img/disco.png" alt="" loading="lazy" decoding="async" />
-            <article class="timeline-card">
-              <span class="timeline-year">1985</span>
-              <h3>Conquista regional</h3>
-              <p>El segundo álbum explota en toda Latinoamérica. Primera gira por Chile, México, Venezuela y Colombia.</p>
-            </article>
-          </li>
-
-          <li class="timeline-item timeline-cta">
-            <img class="timeline-marker" src="img/disco.png" alt="" loading="lazy" decoding="async" />
-            <a href="#" class="btn">Conocé la historia completa</a>
-          </li>
-
-        </ol>
-      </section>
-
-      <!-- ── ÁLBUMES ─────────────────────────────────────────────────── -->
-      <section class="albumes" aria-labelledby="albumes-title">
-        <h2 class="timeline-title" id="albumes-title">Álbumes de estudio</h2>
-
-        <div class="albums-circles">
-          <img src="img/mask-group-1.png" alt="Portada de un álbum de estudio de Soda Stereo" loading="lazy" decoding="async" />
-          <img src="img/mask-group-2.png" alt="Portada de un álbum de estudio de Soda Stereo" loading="lazy" decoding="async" />
-          <img src="img/mask-group-3.png" alt="Portada de un álbum de estudio de Soda Stereo" loading="lazy" decoding="async" />
+          <div class="carousel-nav">
+            <a href="#" class="carousel-button carousel-button--prev">
+              <span class="bi bi-chevron-left"></span>
+            </a>
+            <a href="#" class="carousel-button carousel-button--next">
+              <span class="bi bi-chevron-right"></span>
+            </a>
+          </div>
         </div>
 
         <a href="#" class="btn">Ver discografía completa</a>
+      </section>
 
-        <ul class="stats-grid" role="list">
+      <!-- ── UNA VIDA EN MÚSICA ─────────────────────────────────────── -->
+      <section class="vida">
+        <div class="vida-card">
+          <h2 class="section-title">Una vida en música</h2>
 
-          <li class="stat-card">
-            <span class="stat-number">15</span>
-            <p>Años de carrera activa.</p>
+          <ol class="vida-list">
+            <li class="vida-item">
+              <span class="vida-year">1982</span>
+              <p>Creación de Soda Stereo</p>
+            </li>
+            <li class="vida-item">
+              <span class="vida-year">1993</span>
+              <p><em>Amor amarillo</em> — debut solista</p>
+            </li>
+            <li class="vida-item">
+              <span class="vida-year">1999</span>
+              <p><em>Bocanada</em> — obra maestra</p>
+            </li>
+            <li class="vida-item">
+              <span class="vida-year">2009</span>
+              <p><em>Fuerza natural</em> — el último adiós</p>
+            </li>
+          </ol>
+
+          <a href="#" class="btn">Ver timeline completo</a>
+        </div>
+      </section>
+
+      <!-- ── SODA STEREO ────────────────────────────────────────────── -->
+      <section class="soda">
+        <h2 class="section-title">La banda que cambió el rock en español para siempre.</h2>
+
+        <p class="body-text">
+          Junto a <strong>Zeta Bosio</strong> y <strong>Charly Alberti</strong>, Cerati llevó a
+          Soda Stereo a convertirse en la banda de rock en español más influyente de todos los
+          tiempos, llenando estadios en toda Latinoamérica.
+        </p>
+
+        <div class="soda-circles">
+          <img src="img/band-1.png" alt="Foto de Soda Stereo" />
+          <img src="img/band-2.png" alt="Foto de Soda Stereo" />
+          <img src="img/band-3.png" alt="Foto de Soda Stereo" />
+        </div>
+
+        <a href="soda-stereo.html" class="btn">Explorar Soda Stereo</a>
+      </section>
+
+      <!-- ── LEGADO ─────────────────────────────────────────────────── -->
+      <section class="legado">
+        <h2 class="section-title">Su legado, en voces del mundo</h2>
+        <p class="banda-subtitle">
+          Artistas, fans y el mundo de la música rindieron homenajes al más grande.
+        </p>
+
+        <ul class="legado-cards">
+          <li class="legado-card">
+            <h3>Tributos musicales</h3>
+            <p>Versiones y covers de artistas de toda América Latina.</p>
           </li>
-
-          <li class="stat-card">
-            <span class="stat-number">7</span>
-            <p>Álbumes de estudio publicados.</p>
+          <li class="legado-card">
+            <h3>Conciertos</h3>
+            <p>Shows y eventos en su memoria y por todo el continente.</p>
           </li>
-
-          <li class="stat-card">
-            <span class="stat-number">#1</span>
-            <p><em>"De Música Ligera"</em> elegida la mejor canción del rock a nivel global.</p>
-          </li>
-
         </ul>
+
+        <a href="#" class="btn">Ver todos los homenajes</a>
+      </section>
+
+      <!-- ── TIENDA OFICIAL ─────────────────────────────────────────── -->
+      <section class="tienda">
+        <h2 class="section-title">Tienda oficial</h2>
+
+        <ul class="product-cards">
+          <li class="product-card">
+            <img src="img/soda-logo-nobg.png" alt="Remera de Soda Stereo" />
+            <p class="product-name">Remera Soda</p>
+          </li>
+          <li class="product-card">
+            <img src="img/mask-group-2.png" alt="CD de Soda Stereo" />
+            <p class="product-name">CD</p>
+          </li>
+        </ul>
+
+        <a href="#" class="btn">Ir a la tienda oficial</a>
       </section>
 
     </div>
@@ -218,24 +215,24 @@
     <div class="footer-inner">
       <p class="footer-title">GRACIAS<br>TOTALES</p>
 
-      <nav class="footer-social" aria-label="Redes sociales">
-        <ul class="footer-icons" role="list">
+      <nav class="footer-social">
+        <ul class="footer-icons">
 
           <li>
-            <a class="footer-icon" href="#" aria-label="Spotify">
-              <span class="bi bi-spotify" aria-hidden="true"></span>
+            <a class="footer-icon" href="#">
+              <span class="bi bi-spotify"></span>
             </a>
           </li>
 
           <li>
-            <a class="footer-icon" href="#" aria-label="Instagram">
-              <span class="bi bi-instagram" aria-hidden="true"></span>
+            <a class="footer-icon" href="#">
+              <span class="bi bi-instagram"></span>
             </a>
           </li>
 
           <li>
-            <a class="footer-icon" href="#" aria-label="Facebook">
-              <span class="bi bi-facebook" aria-hidden="true"></span>
+            <a class="footer-icon" href="#">
+              <span class="bi bi-facebook"></span>
             </a>
           </li>
 
@@ -249,6 +246,55 @@
       </p>
     </div>
   </footer>
+
+  <script>
+    /* Carrusel de vinilos — Obra solista.
+    Basado en https://codepen.io/YousifW/pen/LKBxZX
+    Al hacer click en las flechas, se cambian las clases active/prev/next
+    y el CSS mueve cada vinilo con transform y opacity. */
+    const carousel = document.querySelector('.vinilo-carousel');
+
+    if (carousel) {
+      const slides = carousel.querySelectorAll('.carousel-item');
+      const buttons = carousel.querySelectorAll('.carousel-button');
+      const total = slides.length;
+      let current = 1;
+
+      function gotoNum(number) {
+        current = number;
+        let prev = current - 1;
+        let next = current + 1;
+
+        if (next >= total) {
+          next = 0;
+        }
+
+        if (prev < 0) {
+          prev = total - 1;
+        }
+
+        for (let i = 0; i < total; i++) {
+          slides[i].classList.remove('active');
+          slides[i].classList.remove('prev');
+          slides[i].classList.remove('next');
+        }
+
+        slides[current].classList.add('active');
+        slides[prev].classList.add('prev');
+        slides[next].classList.add('next');
+      }
+
+      buttons[0].addEventListener('click', function (event) {
+        event.preventDefault();
+        gotoNum(current > 0 ? current - 1 : total - 1);
+      });
+
+      buttons[1].addEventListener('click', function (event) {
+        event.preventDefault();
+        gotoNum(current < total - 1 ? current + 1 : 0);
+      });
+    }
+  </script>
 
 </body>
 </html>

@@ -83,14 +83,6 @@ Es buena práctica para la mantenibilidad del código.
   --font-section: 'Roboto Serif', serif;
 }
 
-/* Qué es scroll-behavior: smooth?
-Scroll-behavior es un atributo que se usa para hacer que el scroll sea suave.
-Es útil para mejorar la experiencia del usuario.
-*/
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: var(--font-body);
   color: var(--white);
@@ -118,57 +110,7 @@ img {
 
 a {
   text-decoration: underline;
-  /* Qué es color: inherit?
-  Color: inherit es un atributo que se usa para hacer que el color del texto sea el mismo que el color del texto del contenedor.
-  */
-  color: inherit;
-}
-
-/* Enlace para saltar al contenido (accesibilidad por teclado) */
-.skip-link {
-  position: absolute;
-  left: 8px;
-  top: -56px;
-  z-index: 200;
-  background: var(--orange);
   color: var(--white);
-  padding: 10px 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: top 0.2s ease;
-}
-
-.skip-link:focus {
-  top: 8px;
-}
-
-/* Foco visible para navegación con teclado (accesibilidad) */
-/* Qué es :focus-visible?
-:focus-visible es un selector que se usa para definir el estado de foco de un elemento.
-Es útil para definir el estado de foco de un elemento.
-Es una buena práctica para la accesibilidad.
-*/
-a:focus-visible {
-  outline: 2px solid var(--orange);
-  outline-offset: 2px;
-  border-radius: 4px;
-}
-
-/* Respetar la preferencia de movimiento reducido */
-/* Qué es prefers-reduced-motion: reduce?
-prefers-reduced-motion: reduce es un atributo que se usa para definir la preferencia de movimiento reducido.
-Es útil para definir la preferencia de movimiento reducido.
-Es una buena práctica para la accesibilidad.
-*/
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
-  }
 }
 
 /* ─── HEADER / NAV ──────────────────────────────────────────── */
@@ -261,40 +203,6 @@ font-synthesis: none se lo impide y la deja como fue diseñada. */
   display: block;
   width: 100%;
   height: auto;
-}
-
-/* Por qué animamos el logo de Soda Stereo?
-La idea es que desaparezca cuando el usuario hace scroll hacia abajo.
-
-Cómo se posiciona:
-- position: absolute lo saca del flujo para poder ubicarlo libremente.
-- top negativo lo sube de modo que quede mitad sobre el hero y mitad sobre
-  el header (queda "montado" en el borde). z-index: 101 lo deja por encima.
-- left: 50% + translateX(-50%) es el truco para centrarlo horizontalmente.
-
-Cómo se desvanece:
-- animation-timeline: scroll(root) liga el avance de la animación al scroll
-  de la página (en vez de al tiempo).
-- animation-range: 0 60px hace que la animación se complete en los primeros
-  60px de scroll, momento en el que el logo llega a opacity: 0.
-*/
-.hero .hero-logo {
-  position: absolute;
-  top: -11.5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 46px;
-  height: auto;
-  z-index: 101;
-  animation: hero-logo-fade linear both;
-  animation-timeline: scroll(root);
-  animation-range: 0 60px;
-}
-
-@keyframes hero-logo-fade {
-  to {
-    opacity: 0;
-  }
 }
 
 /* ─── SECTION WRAPPER ───────────────────────────────────────── */
@@ -730,6 +638,322 @@ texto (un <span> normalmente es inline y quedaría al lado). */
   font-style: italic;
 }
 
+/* ─── MAIN PAGE (index.html — Gustavo Cerati) ───────────────── */
+
+/* Barra de estadísticas del hero: card azul tipo pill con 3 columnas.
+display: flex reparte los 3 items; text-align: left alinea número y texto
+dentro de cada columna, como en el diseño. */
+.stats-bar {
+  display: flex;
+  gap: 12px;
+  background: linear-gradient(180deg, rgba(86,108,200,0.5), rgba(64,88,170,0.5));
+  border: 2px solid rgba(255,255,255,0.18);
+  border-radius: 30px;
+  padding: 20px 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.22);
+}
+
+.stats-bar-item {
+  flex: 1;
+  text-align: left;
+}
+
+.stats-bar-item .stat-number {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--orange);
+  margin-bottom: 6px;
+}
+
+.stats-bar-item p {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.4;
+}
+
+/* Foto principal de Cerati en la bio. overflow: hidden recorta la imagen
+para que respete los bordes redondeados del contenedor. */
+.bio-image-card {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.3);
+  margin-bottom: 24px;
+}
+
+.bio-image-card img {
+  width: 100%;
+  height: auto;
+}
+
+/* ─── CARRUSEL DE VINILOS (Obra solista) ────────────────────── */
+/* Adaptado de https://codepen.io/YousifW/pen/LKBxZX
+Cada vinilo es una imagen rectangular (funda + disco). Solo 3 se ven:
+active (centro, más grande), prev (izq) y next (der). */
+.vinilo-carousel {
+  margin-bottom: 24px;
+}
+
+.vinilo-carousel-items {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  height: 148px;
+  margin: 0 auto;
+}
+
+.vinilo-carousel .carousel-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  transform: translate(-50%, -50%);
+  transition: all 300ms ease-in-out;
+  z-index: 1;
+  opacity: 0;
+}
+
+.vinilo-carousel .carousel-item a {
+  display: block;
+  text-decoration: none;
+}
+
+.vinilo-carousel .carousel-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.vinilo-carousel .carousel-item.active {
+  width: 180px;
+  opacity: 1;
+  z-index: 99;
+}
+
+/* Los discos laterales se anclan a los bordes del contenedor (left: 0 /
+right: 0) en vez de desplazarse desde el centro. Así se ven completos,
+chicos y con espacio respecto al disco activo, sin superponerse. */
+.vinilo-carousel .carousel-item.prev {
+  width: 72px;
+  left: 0;
+  transform: translate(0, -50%);
+  z-index: 2;
+  opacity: 0.75;
+}
+
+.vinilo-carousel .carousel-item.next {
+  width: 72px;
+  left: auto;
+  right: 0;
+  transform: translate(0, -50%);
+  z-index: 2;
+  opacity: 0.75;
+}
+
+/* Flechas debajo del carrusel, mismo estilo que los íconos del header. */
+.vinilo-carousel .carousel-nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.vinilo-carousel .carousel-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.25);
+  color: var(--white);
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 300ms ease-in-out;
+}
+
+.vinilo-carousel .carousel-button:hover {
+  opacity: 0.85;
+}
+
+.vinilo-carousel .carousel-button span {
+  line-height: 1;
+}
+
+/* ─── UNA VIDA EN MÚSICA ────────────────────────────────────── */
+/* Card azul grande que contiene el título, la lista de hitos y el botón. */
+.vida-card {
+  background: linear-gradient(180deg, rgba(86,108,200,0.4), rgba(64,88,170,0.4));
+  border: 1px solid rgba(120, 150, 255, 0.55);
+  border-radius: 24px;
+  padding: 28px 22px;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.22);
+}
+
+.vida-card .section-title {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.vida-list {
+  list-style: none;
+}
+
+/* Cada hito es una fila flex: año rotado a la izquierda, texto a la derecha.
+flex-shrink: 0 evita que el año se achique cuando el texto es largo. */
+.vida-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+/* El año va en vertical, leyéndose de abajo hacia arriba.
+- writing-mode: vertical-rl apila las letras en columna.
+- rotate(180deg) invierte la columna para que se lea de abajo hacia arriba. */
+.vida-year {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  position: relative;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--orange);
+  flex-shrink: 0;
+}
+
+/* Punto naranja al pie del año. Se posiciona "arriba" en las coordenadas
+del elemento, pero como está rotado 180° se ve abajo. */
+.vida-year::before {
+  content: '';
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 7px;
+  background: var(--orange);
+  border-radius: 50%;
+}
+
+.vida-item p {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--white);
+}
+
+.vida-item p em {
+  font-style: italic;
+}
+
+/* Botón dentro de la card, con borde naranja visible como en el diseño. */
+.vida-card .btn {
+  border: 2px solid var(--orange-light);
+  font-size: 16px;
+  padding: 14px 30px;
+  margin-top: 8px;
+}
+
+/* ─── SODA STEREO (sección en la main) ──────────────────────── */
+/* Tres fotos circulares lado a lado, con una leve superposición lograda
+con margin negativo (sin position absolute). */
+.soda-circles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.soda-circles img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.18);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.35);
+}
+
+.soda-circles img + img {
+  margin-left: -16px;
+}
+
+/* La foto del medio queda al frente y un poco más grande. */
+.soda-circles img:nth-child(2) {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ─── LEGADO ────────────────────────────────────────────────── */
+.legado-cards {
+  list-style: none;
+  margin-bottom: 8px;
+}
+
+/* Cards bordó/rojo oscuro semitransparente, según el diseño. */
+.legado-card {
+  background: linear-gradient(180deg, rgba(139, 0, 0, 0.55), rgba(61, 26, 10, 0.65));
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 18px;
+  padding: 20px 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.25);
+}
+
+.legado-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.legado-card p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* ─── TIENDA OFICIAL ────────────────────────────────────────── */
+.product-cards {
+  list-style: none;
+  margin-bottom: 8px;
+}
+
+/* Card de producto: imagen arriba y nombre abajo, centrados con flex column. */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(180deg, rgba(86, 109, 200, 0.349), rgba(64, 89, 170, 0.356));
+  border: 2px solid rgba(255,255,255,0.18);
+  border-radius: 18px;
+  padding: 24px 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.22);
+}
+
+.product-card img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+}
+
+.product-card .product-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--white);
+}
+
 /* ─── FOOTER ────────────────────────────────────────────────── */
 /* Layout del footer con flexbox (sin grid):
 El <footer> ocupa todo el ancho y lleva el fondo negro.
@@ -876,6 +1100,44 @@ medida que hay más espacio. */
   .footer-title {
     font-size: 44px;
   }
+
+  /* Main page — tablet */
+  .stats-bar {
+    padding: 22px 36px;
+    border-radius: 40px;
+  }
+
+  .stats-bar-item .stat-number {
+    font-size: 28px;
+  }
+
+  .stats-bar-item p {
+    font-size: 14px;
+  }
+
+  .vinilo-carousel-items {
+    max-width: 460px;
+    height: 175px;
+  }
+
+  .vinilo-carousel .carousel-item.active {
+    width: 220px;
+  }
+
+  .vinilo-carousel .carousel-item.prev,
+  .vinilo-carousel .carousel-item.next {
+    width: 95px;
+  }
+
+  .soda-circles img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .soda-circles img:nth-child(2) {
+    width: 145px;
+    height: 145px;
+  }
 }
 
 /* ─── MEDIA QUERIES — DESKTOP (≥1024px) ────────────────────── */
@@ -923,11 +1185,6 @@ medida que hay más espacio. */
   .hero .hero-bg {
     height: 100%;
     object-fit: cover;
-  }
-
-  .hero .hero-logo {
-    top: -15px;
-    width: 60px;
   }
 
   /* En desktop, las 3 tarjetas pasan a estar en una fila (flex).
@@ -995,5 +1252,43 @@ medida que hay más espacio. */
 
   .footer-title {
     font-size: 52px;
+  }
+
+  /* Main page — desktop */
+  .vinilo-carousel-items {
+    max-width: 560px;
+    height: 200px;
+  }
+
+  .vinilo-carousel .carousel-item.active {
+    width: 260px;
+  }
+
+  .vinilo-carousel .carousel-item.prev,
+  .vinilo-carousel .carousel-item.next {
+    width: 110px;
+  }
+
+  .soda-circles img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .soda-circles img:nth-child(2) {
+    width: 170px;
+    height: 170px;
+  }
+
+  /* Las dos cards de legado y de productos pasan a estar en fila. */
+  .legado-cards,
+  .product-cards {
+    display: flex;
+    gap: 16px;
+  }
+
+  .legado-card,
+  .product-card {
+    flex: 1;
+    margin-bottom: 0;
   }
 }
